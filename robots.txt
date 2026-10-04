@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mccontario.vercel.app/sitemap.xml
+Sitemap: https://mcco-ontario.vercel.app/sitemap.xml
