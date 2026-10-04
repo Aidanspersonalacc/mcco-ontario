@@ -1100,7 +1100,7 @@
         <div class="eyebrow i18n" id="annivEyebrow" data-en="Today's the day" data-tl="Ngayon na ang araw">Today's the day</div>
         <span class="anniv-chip i18n" id="annivChip" data-en="New Website" data-tl="Bagong Website">New Website</span>
       </div>
-      <h2 id="anniv-title" class="i18n" data-en="Happy 11th Anniversary!" data-tl="Maligayang Ika-11 Anibersaryo!">Happy 11th Anniversary!</h2>
+      <h2 id="anniv-title" class="i18n" data-en="11 years of God's faithfulness, and you're welcome here" data-tl="11 taon ng katapatan ng Diyos, at malugod kang tinatanggap dito">11 years of God's faithfulness, and you're welcome here</h2>
       <p id="annivText" class="i18n" data-en="Eleven years of worship, fellowship, and family — all by God's grace. Join us today as we celebrate, and welcome to our brand-new website, launching on our anniversary." data-tl="Labing-isang taon ng pagsamba, pagsasama-sama, at pamilya — sa biyaya ng Diyos. Samahan kami ngayon sa pagdiriwang, at maligayang pagdating sa aming bagong website na inilunsad sa aming anibersaryo.">Eleven years of worship, fellowship, and family — all by God's grace. Join us today as we celebrate, and welcome to our brand-new website, launching on our anniversary.</p>
       <p class="anniv-welcome i18n" data-en="Everyone is welcome — come as you are, and bring a friend or neighbour." data-tl="Malugod na tinatanggap ang lahat — halina kayo, at isama ang kaibigan o kapitbahay.">Everyone is welcome — come as you are, and bring a friend or neighbour.</p>
       <div id="annivDate" class="anniv-date i18n" data-en="Sunday, October 18, 2026" data-tl="Linggo, Oktubre 18, 2026">Sunday, October 18, 2026</div>
@@ -1729,7 +1729,7 @@
     // (set() is a function declaration below, so it is available here.)
     if (day < event) {
       set(document.getElementById('annivEyebrow'), ['Coming up', 'Malapit na']);
-      set(document.getElementById('anniv-title'), ['Our 11th Anniversary is coming!', 'Papalapit na ang aming Ika-11 Anibersaryo!']);
+      set(document.getElementById('anniv-title'), ["11 years of God's faithfulness, and you're welcome here", "11 taon ng katapatan ng Diyos, at malugod kang tinatanggap dito"]);
       set(document.getElementById('annivText'), ["Eleven years of worship, fellowship, and family \u2014 all by God's grace. Join us on Sunday, October 18 as we celebrate together.",
                'Labing-isang taon ng pagsamba, pagsasama-sama, at pamilya \u2014 sa biyaya ng Diyos. Samahan kami sa Linggo, Oktubre 18 habang sama-sama kaming nagdiriwang.']);
       var chip = document.getElementById('annivChip'); if (chip) chip.hidden = true;
@@ -1791,7 +1791,7 @@
     } else if (day > event) {
       set('We celebrated 11 years — welcome to our new website', 'Ipinagdiwang namin ang 11 taon — maligayang pagdating sa aming bagong website');
     } else if (day < event) {
-      set('Join us October 18 for our 11th Anniversary', 'Samahan kami sa Oktubre 18 para sa aming Ika-11 Anibersaryo');
+      set('Welcome \u2014 we\'re celebrating 11 years on October 18', 'Maligayang pagdating \u2014 ipinagdiriwang namin ang 11 taon sa Oktubre 18');
     }
   })();
 </script>
