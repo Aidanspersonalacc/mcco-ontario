@@ -710,6 +710,21 @@
 
   /* ---------- Footer ---------- */
   /* ---------- Pastor ---------- */
+  /* ---------- Tidy shared styles ---------- */
+  .bg-white { background: #fff; }
+  .bg-warm { background: #F7F3ED; }
+  .sec-title { font-size: clamp(28px, 4vw, 38px); font-weight: 600; line-height: 1.15; }
+  .sub-muted { color: var(--muted); font-size: 16px; margin-top: 6px; }
+  .foot-rule { border: none; border-top: 1px solid rgba(255,255,255,0.25); width: 100%; margin: 16px 0 8px; }
+  .foot-note { text-align: center; font-size: 14px; color: var(--cream); opacity: 0.85; margin-bottom: 6px; }
+  .foot-credit { text-align: center; font-size: 15px; font-weight: 600; color: var(--lantern-soft); }
+
+  /* ---------- After-gallery invitation ---------- */
+  .gallery-cta { text-align: center; margin: 56px auto 0; max-width: 520px; }
+  .gallery-cta h3 { font-family: 'Fraunces', serif; font-size: clamp(24px, 3.4vw, 30px); font-weight: 600; color: var(--dusk); margin-bottom: 8px; }
+  .gallery-cta p { color: var(--muted); font-size: 16px; margin-bottom: 22px; }
+  .gallery-cta .btn-primary { background: var(--dusk); color: #fff; display: inline-block; }
+
   /* ---------- Gallery ---------- */
   .gallery-section { background: var(--paper); }
   .gallery-grid {
@@ -1205,7 +1220,7 @@
     <div>
       <div class="section-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2h3v7h7v3h-7v10h-3V12h-7V9h7V2z"/></svg><span class="i18n" data-en="Welcome" data-tl="Malugod na Pagtanggap">Welcome</span></div>
       <h2 class="i18n" data-en="New here? We were too, once." data-tl="Bago ka dito? Kami rin, minsan.">New here? We were too, once.</h2>
-      <p style="color:var(--muted); font-size:16px; margin-top:6px;">
+      <p class="sub-muted">
         <span class="i18n" data-en="Methodist Congregational Church of Ontario started as a handful of Filipino families meeting in a small church. Today we're a big church, but the heart is the same — real people, real questions, and a faith that has room for both. Our Sunday service runs alongside a Kids Service and a Youth Group." data-tl="Nagsimula ang Methodist Congregational Church of Ontario bilang ilang pamilyang Pilipino na nagtitipon sa isang maliit na simbahan. Ngayon, isa na kaming malaking simbahan, pero pareho pa rin ang puso — tunay na tao, tunay na tanong, at isang pananampalatayang may puwang para sa dalawa. Ang aming Linggong serbisyo ay may kasabay na Kids Service at Youth Group.">Methodist Congregational Church of Ontario started as a handful of Filipino families meeting in a small church. Today we're a big church, but the heart is the same — real people, real questions, and a faith that has room for both. Our Sunday service runs alongside a Kids Service and a Youth Group.</span>
       </p>
     </div>
@@ -1213,12 +1228,12 @@
   </div>
 </section>
 
-<section id="mission-vision" style="background:#fff;">
+<section id="mission-vision" class="bg-white">
   <div class="wrap">
     <div class="section-head">
       <div class="section-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2h3v7h7v3h-7v10h-3V12h-7V9h7V2z"/></svg><span class="i18n" data-en="Who We Are" data-tl="Sino Kami">Who We Are</span></div>
       <h2 class="i18n" data-en="Our Mission &amp; Vision" data-tl="Ang Aming Misyon at Pangitain">Our Mission &amp; Vision</h2>
-      <p style="color:var(--muted); font-size:16px; margin-top:6px; max-width:70ch;" class="i18n" data-en="We are an open group, inclusive, and Christ-centered. We seek to grow in faith, in love, and help build a better community. The majority of our members are younger families with growing children, along with young adults, youth, and a few elderly members. What makes this group unique is our harmonious relationships — open to one another, vibrant, and full of the spirit of unity. In our closeness as one big family, our fellowship has been given the identity, &#8220;Familia Ragragsac.&#8221;" data-tl="Kami ay isang bukas na grupo, mapagpalang tumatanggap, at nakasentro kay Kristo. Naghahangad kaming lumago sa pananampalataya, sa pag-ibig, at tumulong na bumuo ng mas mabuting komunidad. Karamihan sa aming mga miyembro ay mga batang pamilya na may lumalaking mga anak, kasama ang mga young adults, kabataan, at ilang nakatatandang miyembro. Ang natatangi sa grupong ito ay ang maayos na relasyon namin sa isa't isa — bukas sa isa't isa, masigla, at may diwa ng pagkakaisa. Sa aming pagiging malapit bilang isang malaking pamilya, ang aming samahan ay binigyan ng pagkakakilanlan na, &#8220;Familia Ragragsac.&#8221;">We are an open group, inclusive, and Christ-centered. We seek to grow in faith, in love, and help build a better community. The majority of our members are younger families with growing children, along with young adults, youth, and a few elderly members. What makes this group unique is our harmonious relationships — open to one another, vibrant, and full of the spirit of unity. In our closeness as one big family, our fellowship has been given the identity, &#8220;Familia Ragragsac.&#8221;</p>
+      <p class="i18n sub-muted" style="max-width:70ch;" data-en="We are an open group, inclusive, and Christ-centered. We seek to grow in faith, in love, and help build a better community. The majority of our members are younger families with growing children, along with young adults, youth, and a few elderly members. What makes this group unique is our harmonious relationships — open to one another, vibrant, and full of the spirit of unity. In our closeness as one big family, our fellowship has been given the identity, &#8220;Familia Ragragsac.&#8221;" data-tl="Kami ay isang bukas na grupo, mapagpalang tumatanggap, at nakasentro kay Kristo. Naghahangad kaming lumago sa pananampalataya, sa pag-ibig, at tumulong na bumuo ng mas mabuting komunidad. Karamihan sa aming mga miyembro ay mga batang pamilya na may lumalaking mga anak, kasama ang mga young adults, kabataan, at ilang nakatatandang miyembro. Ang natatangi sa grupong ito ay ang maayos na relasyon namin sa isa't isa — bukas sa isa't isa, masigla, at may diwa ng pagkakaisa. Sa aming pagiging malapit bilang isang malaking pamilya, ang aming samahan ay binigyan ng pagkakakilanlan na, &#8220;Familia Ragragsac.&#8221;">We are an open group, inclusive, and Christ-centered. We seek to grow in faith, in love, and help build a better community. The majority of our members are younger families with growing children, along with young adults, youth, and a few elderly members. What makes this group unique is our harmonious relationships — open to one another, vibrant, and full of the spirit of unity. In our closeness as one big family, our fellowship has been given the identity, &#8220;Familia Ragragsac.&#8221;</p>
     </div>
     <div class="ministries-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
       <div class="mv-card">
@@ -1240,7 +1255,7 @@
 <section class="pastor-section">
   <div class="wrap">
     <div class="section-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2h3v7h7v3h-7v10h-3V12h-7V9h7V2z"/></svg><span class="i18n" data-en="Leadership" data-tl="Pamumuno">Leadership</span></div>
-    <h2 style="font-size:26px; font-weight:600; margin-bottom:28px;" class="i18n" data-en="Meet the Pastor" data-tl="Kilalanin ang Pastor">Meet the Pastor</h2>
+    <h2 class="sec-title i18n" style="margin-bottom:28px;" data-en="Meet the Pastor" data-tl="Kilalanin ang Pastor">Meet the Pastor</h2>
     <div class="pastor-card">
       <div class="pastor-info">
         <h3>Rev. Herson Ventura</h3>
@@ -1260,7 +1275,7 @@
   </div>
 </section>
 
-<section id="ministries" style="background:#fff;">
+<section id="ministries" class="bg-white">
   <div class="wrap">
     <div class="section-head">
       <div class="section-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2h3v7h7v3h-7v10h-3V12h-7V9h7V2z"/></svg><span class="i18n" data-en="Get Involved" data-tl="Sumali">Get Involved</span></div>
@@ -1303,7 +1318,7 @@
   </div>
 </section>
 
-<section id="care-connection" style="background:#F7F3ED;">
+<section id="care-connection" class="bg-warm">
   <div class="wrap">
     <div class="section-head">
       <div class="section-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2h3v7h7v3h-7v10h-3V12h-7V9h7V2z"/></svg><span class="i18n" data-en="Care &amp; Connection" data-tl="Pangangalaga at Pagkokonekta">Care &amp; Connection</span></div>
@@ -1344,7 +1359,7 @@
   </div>
 </section>
 
-<section id="upcoming-activities" style="background:#F7F3ED;">
+<section id="upcoming-activities" class="bg-warm">
   <div class="wrap">
     <div class="section-head">
       <div class="section-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2h3v7h7v3h-7v10h-3V12h-7V9h7V2z"/></svg><span class="i18n" data-en="Mark Your Calendar" data-tl="Markahan sa Kalendaryo">Mark Your Calendar</span></div>
@@ -1376,7 +1391,7 @@
   </div>
 </section>
 
-<section id="services" style="background:#fff;">
+<section id="services" class="bg-white">
   <div class="wrap">
     <div class="section-head">
       <div class="section-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2h3v7h7v3h-7v10h-3V12h-7V9h7V2z"/></svg><span class="i18n" data-en="How We Can Help" data-tl="Paano Kami Makakatulong">How We Can Help</span></div>
@@ -1599,6 +1614,11 @@
         <img width="1000" height="461" src="images/gallery-42.webp" alt="Women's fellowship group posing together on the rocky shoreline" loading="lazy">
       </div>
     </div>
+    <div class="gallery-cta">
+      <h3 class="i18n" data-en="Join us this Sunday" data-tl="Samahan kami ngayong Linggo">Join us this Sunday</h3>
+      <p class="i18n" data-en="There's a seat saved for you." data-tl="May nakalaan nang upuan para sa iyo.">There's a seat saved for you.</p>
+      <a href="#visit" class="btn-primary i18n" data-en="Plan Your Visit" data-tl="Magplano ng Pagbisita">Plan Your Visit</a>
+    </div>
   </div>
 </section>
 
@@ -1610,7 +1630,7 @@
 </div>
 
 
-<section id="visit" style="background:#fff;">
+<section id="visit" class="bg-white">
   <div class="wrap visit">
     <a class="visit-map" href="https://www.google.com/maps/search/?api=1&query=25+Old+York+Mills+Rd+Toronto+ON" target="_blank" rel="noopener noreferrer" aria-label="Get directions to Methodist Congregational Church of Ontario">
       <iframe src="https://www.google.com/maps?q=25+Old+York+Mills+Rd+Toronto+ON&output=embed" loading="lazy" allowfullscreen title="Church location map"></iframe>
@@ -1618,7 +1638,7 @@
     </a>
     <div class="visit-details">
       <div class="section-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2h3v7h7v3h-7v10h-3V12h-7V9h7V2z"/></svg><span class="i18n" data-en="Plan Your Visit" data-tl="Magplano ng Pagbisita">Plan Your Visit</span></div>
-      <h2 style="font-size:30px; font-weight:600;" class="i18n" data-en="We'd love to meet you" data-tl="Gusto ka naming makilala">We'd love to meet you</h2>
+      <h2 class="sec-title i18n" data-en="We'd love to meet you" data-tl="Gusto ka naming makilala">We'd love to meet you</h2>
       <dl>
         <dt class="i18n" data-en="Address" data-tl="Tirahan">Address</dt><dd><a href="https://www.google.com/maps/search/?api=1&query=25+Old+York+Mills+Rd+Toronto+ON" target="_blank" rel="noopener noreferrer" style="color:var(--dusk); text-decoration:underline;">25 Old York Mills Rd, Toronto, ON</a></dd>
         <dt class="i18n" data-en="Parking" data-tl="Paradahan">Parking</dt><dd class="i18n" data-en="Free lot on-site" data-tl="Libreng paradahan sa lugar">Free lot on-site</dd>
@@ -1653,9 +1673,9 @@
     </div>
     <div>© 2026 Methodist Congregational Church of Ontario</div>
   </div>
-  <hr style="border:none; border-top:1px solid rgba(255,255,255,0.25); width:100%; margin:16px 0 8px;">
-  <div class="i18n" id="launchNote" style="text-align:center; font-size:14px; color:var(--cream); opacity:0.85; margin-bottom:6px;" data-en="This website launched on our 11th anniversary — October 18, 2026" data-tl="Inilunsad ang website na ito sa aming ika-11 anibersaryo — Oktubre 18, 2026">This website launched on our 11th anniversary — October 18, 2026</div>
-  <div style="text-align:center; opacity:1; font-size:15px; font-weight:600; color:var(--lantern-soft);">Created by Aidan C.</div>
+  <hr class="foot-rule">
+  <div class="i18n foot-note" id="launchNote" data-en="This website launched on our 11th anniversary — October 18, 2026" data-tl="Inilunsad ang website na ito sa aming ika-11 anibersaryo — Oktubre 18, 2026">This website launched on our 11th anniversary — October 18, 2026</div>
+  <div class="foot-credit">Created by Aidan C.</div>
 </footer>
 
 <script>
