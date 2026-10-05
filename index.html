@@ -37,10 +37,12 @@
   "description": "Methodist Congregational Church of Ontario — an open, inclusive, Christ-centered community in Toronto. Join us Sundays for worship, fellowship, and a place to belong."
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap');
 
   :root {
     --dusk: #4A2E22;
@@ -56,6 +58,12 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  /* keyboard focus */
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+    outline: 3px solid var(--lantern, #F2B84B);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
   html { scroll-behavior: smooth; }
 
   .js-reveal {
@@ -1028,7 +1036,7 @@
 
 <nav class="nav">
   <div class="wrap">
-    <div class="brand"><img class="umc-logo" src="images/logo-icon.webp" alt="Methodist Congregational Church of Ontario logo"> <span class="brand-text-full">Methodist Congregational Church of Ontario</span><span class="brand-text-short">MCCO</span></div>
+    <div class="brand"><img width="166" height="170" class="umc-logo" src="images/logo-icon.webp" alt="Methodist Congregational Church of Ontario logo"> <span class="brand-text-full">Methodist Congregational Church of Ontario</span><span class="brand-text-short">MCCO</span></div>
     <div class="nav-links">
       <a href="#about" class="i18n" data-en="About" data-tl="Tungkol">About</a>
       <a href="#ministries" class="i18n" data-en="Ministries" data-tl="Ministeryo">Ministries</a>
@@ -1119,13 +1127,13 @@
     <span style="top:40%; left:45%; width:4px; height:4px; animation-delay: 1.5s;"></span>
   </div>
   <div class="wrap hero-inner">
-    <img class="hero-logo" draggable="false" src="images/logo-icon.webp" alt="Methodist Congregational Church of Ontario logo">
+    <img width="166" height="170" class="hero-logo" draggable="false" src="images/logo-icon.webp" alt="Methodist Congregational Church of Ontario logo">
     <a class="hero-welcome" id="heroWelcome" href="#anniversary"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 6.6L21 9.3l-5.2 4.3L17.5 21 12 17.2 6.5 21l1.7-7.4L3 9.3l6.6-.7L12 2z"/></svg><span class="i18n" id="heroWelcomeText" data-en="Happy 11th Anniversary — welcome to our new website" data-tl="Maligayang Ika-11 Anibersaryo — maligayang pagdating sa aming bagong website">Happy 11th Anniversary — welcome to our new website</span></a>
     <div class="eyebrow">Methodist Congregational Church of Ontario</div>
     <h1><span style="display:block; font-size:clamp(28px, 4vw, 40px); font-weight:700; font-style:italic; color:var(--lantern); letter-spacing:0.5px; margin-bottom:14px;">Mabuhay Kumusta!</span><span class="i18n" data-en="Come as you are, leave feeling at home." data-tl="Halina't maging ikaw, umuwing tila nasa bahay.">Come as you are, leave feeling at home.</span></h1>
     <p class="i18n" data-en="Step through our doors and you'll feel it right away — warm light, familiar faces, and a room full of people glad you're there. It's a special atmosphere we've built together, one Sunday at a time, and we can't wait to share it with you." data-tl="Sa sandaling makapasok ka, mararamdaman mo agad ito — mainit na liwanag, pamilyar na mukha, at isang silid na puno ng taong masaya kang naroon. Ito ay isang natatanging kapaligiran na sama-sama naming binuo, isang Linggo sa isang pagkakataon, at hindi kami makapaghintay na ibahagi ito sa iyo.">Step through our doors and you'll feel it right away — warm light, familiar faces, and a room full of people glad you're there. It's a special atmosphere we've built together, one Sunday at a time, and we can't wait to share it with you.</p>
     <div class="hero-actions" style="margin-top:28px;">
-      <a href="https://www.google.com/maps/search/?api=1&query=25+Old+York+Mills+Rd+Toronto+ON" target="_blank" rel="noopener noreferrer" class="btn-primary i18n" data-en="Plan Your Visit" data-tl="Magplano ng Pagbisita">Plan Your Visit</a>
+      <a href="#visit" class="btn-primary i18n" data-en="Plan Your Visit" data-tl="Magplano ng Pagbisita">Plan Your Visit</a>
       <a href="#about" class="btn-ghost i18n" data-en="Learn Our Story" data-tl="Alamin ang Aming Kwento">Learn Our Story</a>
       <div class="lang-toggle-wrap" style="display:inline-flex; align-items:center; gap:8px; flex-wrap:wrap;">
         <button id="langToggle" class="lang-toggle-btn" type="button" title="Switch this page between English and Tagalog" aria-label="Switch this page between English and Tagalog" style="cursor:pointer; font-family:inherit;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"></path></svg><span class="i18n" data-en="Tagalog" data-tl="English">Tagalog</span></button>
@@ -1487,134 +1495,134 @@
     <div class="gallery-grid" id="galleryGrid">
       <div class="gallery-group-heading i18n" data-en="10th Anniversary Celebration" data-tl="Ika-10 Anibersaryong Pagdiriwang">10th Anniversary Celebration</div>
       <div class="gallery-item" onclick="openLightbox(0)">
-        <img src="images/gallery-01.webp" alt="Sunday congregation photo" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-01.webp" alt="Sunday congregation photo" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(1)">
-        <img src="images/gallery-02.webp" alt="Worship service" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-02.webp" alt="Worship service" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(2)">
-        <img src="images/gallery-03.webp" alt="Chancel choir singing" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-03.webp" alt="Chancel choir singing" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(3)">
-        <img src="images/gallery-04.webp" alt="Choir group photo with anniversary guest" loading="lazy">
+        <img width="1000" height="462" src="images/gallery-04.webp" alt="Choir group photo with anniversary guest" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(4)">
-        <img src="images/gallery-05.webp" alt="Offertory song by youth and children's choir" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-05.webp" alt="Offertory song by youth and children's choir" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(5)">
-        <img src="images/gallery-06.webp" alt="Choir group photo" loading="lazy">
+        <img width="1000" height="577" src="images/gallery-06.webp" alt="Choir group photo" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(6)">
-        <img src="images/gallery-07.webp" alt="Choir group photo" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-07.webp" alt="Choir group photo" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(7)">
-        <img src="images/gallery-08.webp" alt="Filipiniana dance group" loading="lazy">
+        <img width="562" height="1000" src="images/gallery-08.webp" alt="Filipiniana dance group" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(8)">
-        <img src="images/gallery-09.webp" alt="Fan dance performance at the altar" loading="lazy">
+        <img width="750" height="1000" src="images/gallery-09.webp" alt="Fan dance performance at the altar" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(9)">
-        <img src="images/gallery-10.webp" alt="Altar flowers and decorations" loading="lazy">
+        <img width="709" height="1000" src="images/gallery-10.webp" alt="Altar flowers and decorations" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(10)">
-        <img src="images/gallery-11.webp" alt="Holy Bible on the altar" loading="lazy">
+        <img width="750" height="1000" src="images/gallery-11.webp" alt="Holy Bible on the altar" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(11)">
-        <img src="images/gallery-12.webp" alt="Welcome sign for MCCO 10th Anniversary" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-12.webp" alt="Welcome sign for MCCO 10th Anniversary" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(12)">
-        <img src="images/gallery-13.webp" alt="Youth singing on stage" loading="lazy">
+        <img width="750" height="1000" src="images/gallery-13.webp" alt="Youth singing on stage" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(13)">
-        <img src="images/gallery-14.webp" alt="Confirmation class with Pastor" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-14.webp" alt="Confirmation class with Pastor" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(14)">
-        <img src="images/gallery-15.webp" alt="Guest speaker addressing the congregation" loading="lazy">
+        <img width="446" height="1000" src="images/gallery-15.webp" alt="Guest speaker addressing the congregation" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(15)">
-        <img src="images/gallery-16.webp" alt="Pianist accompanying the choir" loading="lazy">
+        <img width="1000" height="667" src="images/gallery-16.webp" alt="Pianist accompanying the choir" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(16)">
-        <img src="images/gallery-17.webp" alt="Pastor Ventura and his wife" loading="lazy">
+        <img width="667" height="1000" src="images/gallery-17.webp" alt="Pastor Ventura and his wife" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(17)">
-        <img src="images/gallery-18.webp" alt="Volunteers serving food at the anniversary celebration" loading="lazy">
+        <img width="750" height="1000" src="images/gallery-18.webp" alt="Volunteers serving food at the anniversary celebration" loading="lazy">
       </div>
       <div class="gallery-group-heading i18n" data-en="Youth Summer Camp" data-tl="Kampo sa Tag-init ng Kabataan">Youth Summer Camp</div>
       <div class="gallery-item" onclick="openLightbox(18)">
-        <img src="images/gallery-19.webp" alt="Youth group toasting with drinks at the summer camp field" loading="lazy">
+        <img width="1000" height="562" src="images/gallery-19.webp" alt="Youth group toasting with drinks at the summer camp field" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(19)">
-        <img src="images/gallery-20.webp" alt="Congregation members gathered under the campsite canopy" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-20.webp" alt="Congregation members gathered under the campsite canopy" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(20)">
-        <img src="images/gallery-21.webp" alt="Group photo in the woods during a nature walk at camp" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-21.webp" alt="Group photo in the woods during a nature walk at camp" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(21)">
-        <img src="images/gallery-22.webp" alt="Youth group posing on a bridge along the road at camp" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-22.webp" alt="Youth group posing on a bridge along the road at camp" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(22)">
-        <img src="images/gallery-23.webp" alt="Group huddled in a circle at night during camp" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-23.webp" alt="Group huddled in a circle at night during camp" loading="lazy">
       </div>
       <div class="gallery-group-heading i18n" data-en="Senior Trips" data-tl="Mga Paglalakbay ng mga Nakatatanda">Senior Trips</div>
       <div class="gallery-item" onclick="openLightbox(23)">
-        <img src="images/gallery-24.webp" alt="Group photo in front of Bruce Anchor Cruises ticket office" loading="lazy">
+        <img width="750" height="1000" src="images/gallery-24.webp" alt="Group photo in front of Bruce Anchor Cruises ticket office" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(24)">
-        <img src="images/gallery-25.webp" alt="Group photo by the Bruce Anchor Cruises sign" loading="lazy">
+        <img width="750" height="1000" src="images/gallery-25.webp" alt="Group photo by the Bruce Anchor Cruises sign" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(25)">
-        <img src="images/gallery-26.webp" alt="Group of friends posing near the water on a sunny day" loading="lazy">
+        <img width="750" height="1000" src="images/gallery-26.webp" alt="Group of friends posing near the water on a sunny day" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(26)">
-        <img src="images/gallery-27.webp" alt="Group having a picnic lunch together under the trees" loading="lazy">
+        <img width="750" height="1000" src="images/gallery-27.webp" alt="Group having a picnic lunch together under the trees" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(27)">
-        <img src="images/gallery-28.webp" alt="Large group photo under a tree in a lavender field" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-28.webp" alt="Large group photo under a tree in a lavender field" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(28)">
-        <img src="images/gallery-29.webp" alt="Senior members group photo at Bruce Anchor Cruises" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-29.webp" alt="Senior members group photo at Bruce Anchor Cruises" loading="lazy">
       </div>
       <div class="gallery-group-heading i18n" data-en="Young Adult Fellowship" data-tl="Fellowship ng mga Young Adults">Young Adult Fellowship</div>
       <div class="gallery-item" onclick="openLightbox(29)">
-        <img src="images/gallery-30.webp" alt="Young adult fellowship members forming heart shapes with their hands on the beach, MCCO shirts" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-30.webp" alt="Young adult fellowship members forming heart shapes with their hands on the beach, MCCO shirts" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(30)">
-        <img src="images/gallery-31.webp" alt="Young adult fellowship gathered around a picnic table full of food, ROOTED shirts" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-31.webp" alt="Young adult fellowship gathered around a picnic table full of food, ROOTED shirts" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(31)">
-        <img src="images/gallery-32.webp" alt="Young adult fellowship group photo under a tree near the beach" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-32.webp" alt="Young adult fellowship group photo under a tree near the beach" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(32)">
-        <img src="images/gallery-33.webp" alt="Young adult fellowship member looking out at the lake in an MCCO shirt" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-33.webp" alt="Young adult fellowship member looking out at the lake in an MCCO shirt" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(33)">
-        <img src="images/gallery-34.webp" alt="Young adult fellowship group photo on the beach, ROOTED Colossians 2:7 shirts" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-34.webp" alt="Young adult fellowship group photo on the beach, ROOTED Colossians 2:7 shirts" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(34)">
-        <img src="images/gallery-35.webp" alt="Young adult fellowship group photo laughing together on the beach" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-35.webp" alt="Young adult fellowship group photo laughing together on the beach" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(35)">
-        <img src="images/gallery-36.webp" alt="Young adult fellowship group forming heart shapes with their hands, backs to the camera" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-36.webp" alt="Young adult fellowship group forming heart shapes with their hands, backs to the camera" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(36)">
-        <img src="images/gallery-37.webp" alt="Young adult fellowship women walking together along the rocky shoreline" loading="lazy">
+        <img width="1000" height="750" src="images/gallery-37.webp" alt="Young adult fellowship women walking together along the rocky shoreline" loading="lazy">
       </div>
       <div class="gallery-group-heading i18n" data-en="Women's Fellowship" data-tl="Fellowship ng mga Kababaihan">Women's Fellowship</div>
       <div class="gallery-item" onclick="openLightbox(37)">
-        <img src="images/gallery-38.webp" alt="Women's fellowship group photo seated under a willow tree near the water" loading="lazy">
+        <img width="1000" height="562" src="images/gallery-38.webp" alt="Women's fellowship group photo seated under a willow tree near the water" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(38)">
-        <img src="images/gallery-39.webp" alt="Women's fellowship group photo standing and seated along the shoreline" loading="lazy">
+        <img width="1000" height="562" src="images/gallery-39.webp" alt="Women's fellowship group photo standing and seated along the shoreline" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(39)">
-        <img src="images/gallery-40.webp" alt="Women's fellowship members reading notes together on the beach" loading="lazy">
+        <img width="562" height="1000" src="images/gallery-40.webp" alt="Women's fellowship members reading notes together on the beach" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(40)">
-        <img src="images/gallery-41.webp" alt="Women's fellowship group gathered near the picnic area by the lake" loading="lazy">
+        <img width="1000" height="562" src="images/gallery-41.webp" alt="Women's fellowship group gathered near the picnic area by the lake" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLightbox(41)">
-        <img src="images/gallery-42.webp" alt="Women's fellowship group posing together on the rocky shoreline" loading="lazy">
+        <img width="1000" height="461" src="images/gallery-42.webp" alt="Women's fellowship group posing together on the rocky shoreline" loading="lazy">
       </div>
     </div>
   </div>
@@ -1660,7 +1668,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="brand" style="font-family:'Fraunces',serif; font-weight:600;"><img class="umc-logo" src="images/logo-icon.webp" alt="Methodist Congregational Church of Ontario logo"> Methodist Congregational Church of Ontario</div>
+    <div class="brand" style="font-family:'Fraunces',serif; font-weight:600;"><img width="166" height="170" class="umc-logo" src="images/logo-icon.webp" alt="Methodist Congregational Church of Ontario logo"> Methodist Congregational Church of Ontario</div>
     <div class="foot-links">
       <a href="#about" class="i18n" data-en="About" data-tl="Tungkol">About</a>
       <a href="#ministries" class="i18n" data-en="Ministries" data-tl="Ministeryo">Ministries</a>
