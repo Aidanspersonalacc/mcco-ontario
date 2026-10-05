@@ -2072,15 +2072,20 @@
     var hero = document.querySelector('.hero');
     var v = document.getElementById('heroVideo');
     if (!hero || !v) return;
-    var c = navigator.connection || {};
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce || c.saveData || /(^|-)2g$/.test(c.effectiveType || '')) return;
-    v.muted = true;
+    if (reduce) return;
+    v.muted = true; v.defaultMuted = true; v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', ''); v.preload = 'auto';
     v.addEventListener('playing', function () { hero.classList.add('has-video'); });
     v.addEventListener('error', function () { hero.classList.remove('has-video'); });
     v.src = v.getAttribute('data-src');
     var go = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
     go();
+    // some phones block autoplay until the first touch: try again on the first tap or scroll
+    var again = function () { go(); };
+    ['touchstart', 'click', 'scroll'].forEach(function (ev) {
+      window.addEventListener(ev, function once() { again(); if (!v.paused) window.removeEventListener(ev, once); }, { passive: true });
+    });
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) go(); });
     // save battery: pause while the welcome section is scrolled out of view
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
