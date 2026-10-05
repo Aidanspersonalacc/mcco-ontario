@@ -412,6 +412,23 @@
     transition: border-color 0.2s, transform 0.2s;
   }
   .btn-ghost:hover { border-color: var(--lantern); transform: translateY(-2px); }
+  .btn-live {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.55);
+    color: #fff;
+  }
+  .btn-live::before {
+    content: ""; width: 10px; height: 10px; border-radius: 50%;
+    background: #E5484D; box-shadow: 0 0 0 0 rgba(229,72,77,0.7);
+    animation: livePulse 2s ease-out infinite;
+  }
+  .btn-live:hover { background: rgba(255,255,255,0.24); border-color: #fff; }
+  @keyframes livePulse {
+    0% { box-shadow: 0 0 0 0 rgba(229,72,77,0.6); }
+    70%, 100% { box-shadow: 0 0 0 9px rgba(229,72,77,0); }
+  }
+  @media (prefers-reduced-motion: reduce) { .btn-live::before { animation: none; } }
   .lang-toggle-btn {
     background: rgba(232,163,61,0.18);
     border: 2px solid var(--lantern);
@@ -720,10 +737,11 @@
   .foot-credit { text-align: center; font-size: 15px; font-weight: 600; color: var(--lantern-soft); }
 
   /* ---------- After-gallery invitation ---------- */
-  .gallery-cta { text-align: center; margin: 56px auto 0; max-width: 520px; }
+  .gallery-rule { border: none; border-top: 1px solid var(--rule); margin: 56px 0 0; }
+  .gallery-cta { text-align: center; margin: 48px auto 0; max-width: 520px; }
   .gallery-cta h3 { font-family: 'Fraunces', serif; font-size: clamp(24px, 3.4vw, 30px); font-weight: 600; color: var(--dusk); margin-bottom: 8px; }
   .gallery-cta p { color: var(--muted); font-size: 16px; margin-bottom: 22px; }
-  .gallery-cta .btn-primary { background: var(--dusk); color: #fff; display: inline-block; }
+  .gallery-cta .btn-primary { background: var(--dusk); color: #fff; display: inline-block; padding: 16px 34px; font-size: 16px; border-radius: 12px; }
 
   /* ---------- Gallery ---------- */
   .gallery-section { background: var(--paper); }
@@ -1124,7 +1142,7 @@
     <div class="hero-actions" style="margin-top:28px;">
       <a href="#visit" class="btn-primary i18n" data-en="Plan Your Visit" data-tl="Magplano ng Pagbisita">Plan Your Visit</a>
       <a href="#about" class="btn-ghost i18n" data-en="Learn Our Story" data-tl="Alamin ang Aming Kwento">Learn Our Story</a>
-      <a href="https://www.facebook.com/methodistontario/" target="_blank" rel="noopener noreferrer" class="btn-ghost i18n" data-en="Watch Live" data-tl="Manood ng Live">Watch Live</a>
+      <a href="https://www.facebook.com/methodistontario/" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-live i18n" data-en="Watch Live" data-tl="Manood ng Live">Watch Live</a>
       <div class="lang-toggle-wrap" style="display:inline-flex; align-items:center; gap:8px; flex-wrap:wrap;">
         <button id="langToggle" class="lang-toggle-btn" type="button" title="Switch this page between English and Tagalog" aria-label="Switch this page between English and Tagalog" style="cursor:pointer; font-family:inherit;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"></path></svg><span class="i18n" data-en="Tagalog" data-tl="English">Tagalog</span></button>
         <span class="i18n" style="font-size:14px; font-weight:600; color:var(--cream); opacity:1;" data-en="Tap to read this page in Tagalog" data-tl="Pindutin para basahin ang pahinang ito sa Ingles">Tap to read this page in Tagalog</span>
@@ -1615,6 +1633,7 @@
         <img width="1000" height="461" src="images/gallery-42.webp" alt="Women's fellowship group posing together on the rocky shoreline" loading="lazy">
       </div>
     </div>
+    <hr class="gallery-rule">
     <div class="gallery-cta">
       <h3 class="i18n" data-en="Join us this Sunday" data-tl="Samahan kami ngayong Linggo">Join us this Sunday</h3>
       <p class="i18n" data-en="There's a seat saved for you." data-tl="May nakalaan nang upuan para sa iyo.">There's a seat saved for you.</p>
