@@ -913,46 +913,72 @@
   .pastor-card {
     display: flex;
     align-items: center;
-    gap: 32px;
-    background: var(--cream);
+    gap: 36px;
+    background: linear-gradient(135deg, #fff 0%, var(--cream) 100%);
     border: 1px solid var(--rule);
-    border-radius: 12px;
-    padding: 36px;
+    border-top: 4px solid var(--lantern);
+    border-radius: 18px;
+    padding: 34px 38px;
+    box-shadow: 0 14px 34px rgba(74,46,34,0.09);
   }
-  @media (max-width: 640px) { .pastor-card { flex-direction: column; text-align: center; } }
+  .pastor-photo {
+    width: 150px; height: 150px; flex-shrink: 0;
+    object-fit: cover; object-position: center 14%;
+    border-radius: 16px;
+    border: 4px solid #fff;
+    box-shadow: 8px 8px 0 var(--lantern-soft), 0 14px 26px rgba(46,27,20,0.16);
+    margin: 0 8px 8px 0;
+  }
   .pastor-info h3 {
-    font-size: 21px;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 3vw, 30px);
     font-weight: 600;
-    margin-bottom: 2px;
+    color: var(--dusk);
+    line-height: 1.15;
+    margin-bottom: 8px;
   }
   .pastor-info .role {
+    display: flex; align-items: center; gap: 12px;
     font-family: 'Courier Prime', monospace;
     font-size: 12px;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--lantern);
-    margin-bottom: 12px;
-  }
-  .pastor-info p.bio {
-    color: var(--muted);
-    font-size: 15px;
-    max-width: 52ch;
+    color: #B9772A;
     margin-bottom: 14px;
   }
+  .pastor-info .role::before { content: ""; width: 28px; height: 2px; background: var(--lantern); }
+  .pastor-info p.bio {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 46ch;
+    margin-bottom: 20px;
+  }
+  .pastor-links { display: flex; gap: 12px; flex-wrap: wrap; }
   .pastor-social {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
     font-size: 14px;
     font-weight: 600;
     color: var(--dusk);
+    background: #fff;
     border: 1px solid var(--rule);
-    padding: 8px 16px;
-    border-radius: 6px;
-    transition: border-color 0.2s, color 0.2s;
+    padding: 11px 20px;
+    border-radius: 999px;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
   }
-  .pastor-social:hover { border-color: #1877F2; color: #1877F2; }
+  .pastor-social:first-child { background: var(--dusk); border-color: var(--dusk); color: #fff; }
+  .pastor-social:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(74,46,34,0.18); }
+  .pastor-social:first-child:hover { background: #1877F2; border-color: #1877F2; color: #fff; }
   .pastor-social svg { width: 16px; height: 16px; }
+  @media (max-width: 640px) {
+    .pastor-card { flex-direction: column; text-align: center; gap: 24px; padding: 30px 22px; }
+    .pastor-photo { width: 140px; height: 140px; }
+    .pastor-info .role { justify-content: center; }
+    .pastor-info .role::before { display: none; }
+    .pastor-info p.bio { margin-left: auto; margin-right: auto; }
+    .pastor-links { justify-content: center; }
+  }
 
   footer {
     background: var(--dusk-deep);
@@ -1330,10 +1356,12 @@
     <div class="section-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2h3v7h7v3h-7v10h-3V12h-7V9h7V2z"/></svg><span class="i18n" data-en="Leadership" data-tl="Pamumuno">Leadership</span></div>
     <h2 class="sec-title i18n" style="margin-bottom:28px;" data-en="Meet the Pastor" data-tl="Kilalanin ang Pastor">Meet the Pastor</h2>
     <div class="pastor-card">
+      <img class="pastor-photo" src="images/pastor.webp" width="800" height="978" alt="Rev. Herson Ventura, Pastor" loading="lazy">
       <div class="pastor-info">
         <h3>Rev. Herson Ventura</h3>
         <div class="role i18n" data-en="Pastor" data-tl="Pastor">Pastor</div>
-        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <p class="bio i18n" data-en="Feel free to reach out anytime. We'd love to hear from you." data-tl="Huwag mag-atubiling makipag-ugnayan anumang oras. Gusto naming marinig mula sa iyo.">Feel free to reach out anytime. We'd love to hear from you.</p>
+        <div class="pastor-links">
           <a href="https://www.facebook.com/share/14eyFTvDniK/?mibextid=wwXIfr" class="pastor-social" target="_blank" rel="noopener noreferrer" aria-label="Reach out to Pastor Ventura on Facebook">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.87v-6.98H7.9V12h2.6V9.8c0-2.57 1.53-3.99 3.87-3.99 1.12 0 2.3.2 2.3.2v2.53h-1.3c-1.28 0-1.68.8-1.68 1.62V12h2.86l-.46 2.89h-2.4v6.98A10 10 0 0 0 22 12z"/></svg>
             <span class="i18n" data-en="Reach Out to Pastor Ventura" data-tl="Makipag-ugnayan kay Pastor Ventura">Reach Out to Pastor Ventura</span>
