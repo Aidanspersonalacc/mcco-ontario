@@ -745,39 +745,33 @@
 
   /* ---------- New-website notice (shown for a short time after launch) ---------- */
   .launch-bar {
-    background: linear-gradient(90deg, var(--lantern) 0%, #F4C26B 50%, var(--lantern) 100%);
-    color: var(--dusk-deep);
+    background: var(--dusk-deep);
+    color: var(--cream);
     text-align: center;
-    padding: 18px 56px 18px 20px;
-    font-size: clamp(17px, 2.4vw, 21px);
-    font-weight: 700;
-    line-height: 1.35;
+    padding: 15px 56px 15px 24px;
     position: relative;
-    box-shadow: 0 4px 18px rgba(46,27,20,0.28);
+    border-bottom: 1px solid rgba(232,163,61,0.55);
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 6px 18px;
   }
   .launch-bar[hidden] { display: none; }
-  .launch-bar .lb-new {
-    display: inline-block;
-    background: var(--dusk-deep); color: #fff;
-    font-size: 12px; letter-spacing: 2px; font-weight: 800;
-    padding: 5px 11px; border-radius: 999px; margin-right: 12px;
-    vertical-align: middle;
-    animation: lbPulse 2s ease-in-out infinite;
+  .launch-bar .lb-tag {
+    font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--lantern);
+    padding-right: 18px; border-right: 1px solid rgba(255,255,255,0.28);
   }
-  @keyframes lbPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-  @media (prefers-reduced-motion: reduce) { .launch-bar .lb-new { animation: none; } }
-  .launch-bar .lb-link {
-    display: inline-block; margin-left: 14px;
-    background: var(--dusk-deep); color: #fff;
-    padding: 8px 18px; border-radius: 999px;
-    font-size: 15px; font-weight: 700; text-decoration: none;
+  .launch-bar .lb-msg { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; line-height: 1.35; }
+  .launch-bar .lb-link { color: var(--lantern); font-size: 15px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+  .launch-bar .lb-link:hover { color: #fff; }
+  @media (max-width: 640px) {
+    .launch-bar { padding: 16px 44px 16px 18px; }
+    .launch-bar .lb-tag { border-right: 0; padding-right: 0; flex-basis: 100%; }
+    .launch-bar .lb-msg { font-size: 17px; }
   }
-  .launch-bar .lb-link:hover { filter: brightness(1.25); }
-  @media (max-width: 600px) { .launch-bar .lb-link { display: block; margin: 12px auto 0; width: max-content; } }
   .launch-bar button {
-    position: absolute; right: 10px; top: 14px;
-    background: transparent; border: 0; color: var(--dusk-deep);
-    font-size: 28px; line-height: 1; padding: 4px 10px; cursor: pointer; opacity: 0.75;
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    background: transparent; border: 0; color: var(--cream);
+    font-size: 26px; line-height: 1; padding: 6px 10px; cursor: pointer; opacity: 0.7;
   }
   .launch-bar button:hover { opacity: 1; }
 
@@ -1168,8 +1162,9 @@
 </script>
 
 <div class="launch-bar" id="launchBar" hidden role="status">
-  <span class="lb-new i18n" data-en="JUST LAUNCHED" data-tl="KALULUNSAD LANG">JUST LAUNCHED</span><span class="i18n" data-en="Our brand-new website is here! Welcome — we're so glad you're here." data-tl="Narito na ang aming bagong website! Maligayang pagdating — masaya kaming narito ka.">Our brand-new website is here! Welcome — we're so glad you're here.</span>
-  <a href="#visit" class="lb-link i18n" data-en="Plan your visit" data-tl="Magplano ng pagbisita">Plan your visit</a>
+  <span class="lb-tag i18n" data-en="Just launched" data-tl="Kalulunsad lang">Just launched</span>
+  <span class="lb-msg i18n" data-en="Our brand-new website is here. Welcome, we're so glad you're here." data-tl="Narito na ang aming bagong website. Maligayang pagdating, masaya kaming narito ka.">Our brand-new website is here. Welcome, we're so glad you're here.</span>
+  <a href="#visit" class="lb-link i18n" data-en="Plan your visit &rarr;" data-tl="Magplano ng pagbisita &rarr;">Plan your visit &rarr;</a>
   <button type="button" id="launchBarClose" aria-label="Close notice">&times;</button>
 </div>
 <section class="hero">
