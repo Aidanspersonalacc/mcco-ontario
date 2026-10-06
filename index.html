@@ -743,6 +743,26 @@
   .gallery-cta p { color: var(--muted); font-size: 16px; margin-bottom: 22px; }
   .gallery-cta .btn-primary { background: var(--dusk); color: #fff; display: inline-block; padding: 16px 34px; font-size: 16px; border-radius: 12px; }
 
+  /* ---------- New-website notice (shown for a short time after launch) ---------- */
+  .launch-bar {
+    background: var(--dusk-deep);
+    color: var(--cream);
+    text-align: center;
+    padding: 12px 52px 12px 18px;
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+    border-bottom: 2px solid var(--lantern);
+  }
+  .launch-bar[hidden] { display: none; }
+  .launch-bar a { color: var(--lantern); text-decoration: underline; margin-left: 6px; }
+  .launch-bar button {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    background: transparent; border: 0; color: var(--cream);
+    font-size: 24px; line-height: 1; padding: 6px 10px; cursor: pointer; opacity: 0.8;
+  }
+  .launch-bar button:hover { opacity: 1; }
+
   /* ---------- Gallery ---------- */
   .gallery-section { background: var(--paper); }
   .gallery-grid {
@@ -1012,7 +1032,7 @@
     .anniv-meta { justify-content: center; }
   }
 
-  /* ---------- Welcome touches for the anniversary + launch ---------- */
+  /* ---------- Welcome touches for the anniversary ---------- */
   .hero-welcome {
     display: inline-flex;
     align-items: center;
@@ -1129,6 +1149,11 @@
   });
 </script>
 
+<div class="launch-bar" id="launchBar" hidden role="status">
+  <span class="i18n" data-en="Welcome to our new website! We're so glad you're here." data-tl="Maligayang pagdating sa aming bagong website! Masaya kaming narito ka.">Welcome to our new website! We're so glad you're here.</span>
+  <a href="#visit" class="i18n" data-en="Plan your visit" data-tl="Magplano ng pagbisita">Plan your visit</a>
+  <button type="button" id="launchBarClose" aria-label="Close notice">&times;</button>
+</div>
 <section class="hero">
   <video class="hero-video" id="heroVideo" data-src="hero.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
   <div class="hero-shade"></div>
@@ -1163,7 +1188,7 @@
         <span class="anniv-chip i18n" id="annivChip" data-en="New Website" data-tl="Bagong Website">New Website</span>
       </div>
       <h2 id="anniv-title" class="i18n" data-en="11 years of God's faithfulness, and you're welcome here" data-tl="11 taon ng katapatan ng Diyos, at malugod kang tinatanggap dito">11 years of God's faithfulness, and you're welcome here</h2>
-      <p id="annivText" class="i18n" data-en="Eleven years of worship, fellowship, and family — all by God's grace. Join us today as we celebrate, and welcome to our brand-new website, launching on our anniversary." data-tl="Labing-isang taon ng pagsamba, pagsasama-sama, at pamilya — sa biyaya ng Diyos. Samahan kami ngayon sa pagdiriwang, at maligayang pagdating sa aming bagong website na inilunsad sa aming anibersaryo.">Eleven years of worship, fellowship, and family — all by God's grace. Join us today as we celebrate, and welcome to our brand-new website, launching on our anniversary.</p>
+      <p id="annivText" class="i18n" data-en="Eleven years of worship, fellowship, and family — all by God's grace. Join us today as we celebrate, and welcome to our new website." data-tl="Labing-isang taon ng pagsamba, pagsasama-sama, at pamilya — sa biyaya ng Diyos. Samahan kami ngayon sa pagdiriwang, at maligayang pagdating sa aming bagong website.">Eleven years of worship, fellowship, and family — all by God's grace. Join us today as we celebrate, and welcome to our new website.</p>
       <p class="anniv-welcome i18n" data-en="Everyone is welcome — come as you are, and bring a friend or neighbour." data-tl="Malugod na tinatanggap ang lahat — halina kayo, at isama ang kaibigan o kapitbahay.">Everyone is welcome — come as you are, and bring a friend or neighbour.</p>
       <div id="annivDate" class="anniv-date i18n" data-en="Sunday, October 18, 2026" data-tl="Linggo, Oktubre 18, 2026">Sunday, October 18, 2026</div>
       <div class="anniv-actions">
@@ -1695,7 +1720,6 @@
     <div>© 2026 Methodist Congregational Church of Ontario</div>
   </div>
   <hr class="foot-rule">
-  <div class="i18n foot-note" id="launchNote" data-en="This website launched on our 11th anniversary — October 18, 2026" data-tl="Inilunsad ang website na ito sa aming ika-11 anibersaryo — Oktubre 18, 2026">This website launched on our 11th anniversary — October 18, 2026</div>
   <div class="foot-credit">Created by Aidan C.</div>
 </footer>
 
@@ -1785,7 +1809,7 @@
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script>
-  // The site launches on the anniversary (Sunday, Oct 18, 2026), so the default markup is the launch-day welcome.
+  // The default markup is the anniversary-day welcome (Sunday, Oct 18, 2026).
   // After the day it softens into a thank-you, and from Nov 2 the banner is hidden (visitor's local date).
   (function () {
     var banner = document.getElementById('anniversary');
@@ -1815,8 +1839,8 @@
     }
     set(document.getElementById('annivEyebrow'), ['Church Anniversary', 'Anibersaryo ng Simbahan']);
     set(document.getElementById('anniv-title'), ['We celebrated 11 years together', 'Ipinagdiwang namin ang 11 taon nang magkakasama']);
-    set(document.getElementById('annivText'), ['Thank you to everyone who joined us for our 11th anniversary — and welcome to our new website, launched on that very day. Come worship with us any Sunday.',
-             'Salamat sa lahat ng sumama sa amin sa aming ika-11 anibersaryo — at maligayang pagdating sa aming bagong website na inilunsad sa mismong araw na iyon. Sumamba kasama namin tuwing Linggo.']);
+    set(document.getElementById('annivText'), ['Thank you to everyone who joined us for our 11th anniversary — and welcome to our new website. Come worship with us any Sunday.',
+             'Salamat sa lahat ng sumama sa amin sa aming ika-11 anibersaryo — at maligayang pagdating sa aming bagong website. Sumamba kasama namin tuwing Linggo.']);
     set(document.getElementById('annivDate'), ['Celebrated October 18, 2026', 'Ipinagdiwang noong Oktubre 18, 2026']);
   })();
 </script>
@@ -1841,7 +1865,7 @@
   })();
 </script>
 <script>
-  // Hero welcome pill: launch-day text is the default; it changes after the anniversary (visitor's local date).
+  // Hero welcome pill: anniversary-day text is the default; it changes after the anniversary (visitor's local date).
   (function () {
     var pill = document.getElementById('heroWelcome');
     var pillText = document.getElementById('heroWelcomeText');
@@ -2112,6 +2136,26 @@
         entries.forEach(function (e) { if (e.isIntersecting) go(); else v.pause(); });
       }, { threshold: 0.05 }).observe(hero);
     }
+  })();
+</script>
+<script>
+  // New-website notice. Change LAUNCH to the day the site goes live; it shows for SHOW_DAYS days, then hides itself.
+  (function () {
+    var LAUNCH = new Date(2026, 9, 5);   // year, month (0 = Jan, so 9 = Oct), day
+    var SHOW_DAYS = 14;
+    var bar = document.getElementById('launchBar');
+    var close = document.getElementById('launchBarClose');
+    if (!bar) return;
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var end = new Date(LAUNCH.getFullYear(), LAUNCH.getMonth(), LAUNCH.getDate() + SHOW_DAYS);
+    if (today < LAUNCH || today >= end) return;
+    try { if (sessionStorage.getItem('launchBarClosed')) return; } catch (e) {}
+    bar.hidden = false;
+    if (close) close.addEventListener('click', function () {
+      bar.hidden = true;
+      try { sessionStorage.setItem('launchBarClosed', '1'); } catch (e) {}
+    });
   })();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
