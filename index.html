@@ -712,6 +712,21 @@
     padding: 8px 16px;
     border-radius: 999px;
   }
+  /* Fallbacks for failed loads (gallery photo, map embed) */
+  .gallery-item.is-broken { cursor: default; display: flex; align-items: center; justify-content: center; text-align: center; padding: 10px; }
+  .gallery-item.is-broken img { display: none; }
+  .gallery-item.is-broken::after { content: attr(data-fallback); font-size: 13px; color: var(--muted); }
+  .map-fallback {
+    display: none;
+    position: absolute; inset: 0;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 6px; padding: 20px; text-align: center;
+    background: var(--paper); color: var(--dusk);
+  }
+  .map-fallback strong { font-family: 'Fraunces', serif; font-size: 18px; }
+  .map-fallback span { font-size: 14px; color: var(--muted); }
+  .visit-map.map-failed iframe, .visit-map.map-failed .map-overlay { display: none; }
+  .visit-map.map-failed .map-fallback { display: flex; }
   .visit-details dl {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -1735,7 +1750,8 @@
 <section id="visit" class="bg-white">
   <div class="wrap visit">
     <a class="visit-map" href="https://www.google.com/maps/search/?api=1&query=25+Old+York+Mills+Rd+Toronto+ON" target="_blank" rel="noopener noreferrer" aria-label="Get directions to Methodist Congregational Church of Ontario">
-      <iframe src="https://www.google.com/maps?q=25+Old+York+Mills+Rd+Toronto+ON&output=embed" loading="lazy" allowfullscreen title="Church location map"></iframe>
+      <iframe id="visitMapFrame" src="https://www.google.com/maps?q=25+Old+York+Mills+Rd+Toronto+ON&output=embed" loading="lazy" allowfullscreen title="Church location map"></iframe>
+      <div class="map-fallback" aria-hidden="true"><strong>25 Old York Mills Rd, Toronto, ON</strong><span class="i18n" data-en="Tap to open in Google Maps" data-tl="Pindutin para buksan sa Google Maps">Tap to open in Google Maps</span></div>
       <div class="map-overlay"><span class="i18n" data-en="Get Directions" data-tl="Kumuha ng Direksyon">Get Directions</span></div>
     </a>
     <div class="visit-details">
@@ -1844,15 +1860,36 @@
   };
 
   window.changeLightbox = function(delta) {
+    lightboxDir = delta < 0 ? -1 : 1;
     currentIndex = (currentIndex + delta + images.length) % images.length;
     showImage();
   };
 
+  let lightboxFails = 0, lightboxDir = 1;
   function showImage() {
     const item = images[currentIndex];
     lightboxImg.src = item.src;
     lightboxImg.alt = item.alt;
   }
+  // If a photo can't load, try the next one; if none load, close the viewer.
+  lightboxImg.addEventListener('load', function () { lightboxFails = 0; });
+  lightboxImg.addEventListener('error', function () {
+    if (!overlay.classList.contains('open') || !lightboxImg.getAttribute('src')) return;
+    if (++lightboxFails >= images.length) { lightboxFails = 0; closeLightbox(); return; }
+    currentIndex = (currentIndex + lightboxDir + images.length) % images.length;
+    showImage();
+  });
+  // Mark gallery tiles whose photo fails to load, instead of leaving a broken-image icon.
+  function markBroken(img) {
+    const tile = img.closest('.gallery-item');
+    if (!tile) return;
+    tile.classList.add('is-broken');
+    tile.setAttribute('data-fallback', document.documentElement.lang === 'tl' ? 'Hindi ma-load ang larawan' : 'Photo unavailable');
+  }
+  grid.addEventListener('error', function (e) { if (e.target.tagName === 'IMG') markBroken(e.target); }, true);
+  grid.querySelectorAll('img').forEach(function (img) {
+    if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) markBroken(img);
+  });
 
   document.addEventListener('keydown', function(e) {
     if (!overlay.classList.contains('open')) return;
@@ -2213,6 +2250,22 @@
       bar.hidden = true;
       try { sessionStorage.setItem('launchBarClosed', '1'); } catch (e) {}
     });
+  })();
+</script>
+<script>
+  // If the map embed hasn't loaded after 10s (blocked, offline, slow), swap in the plain address link.
+  (function () {
+    var f = document.getElementById('visitMapFrame');
+    if (!f) return;
+    var box = f.closest('.visit-map'), loaded = false;
+    f.addEventListener('load', function () { loaded = true; });
+    setTimeout(function () {
+      // loading="lazy" iframes that were never scrolled into view haven't started; only judge once the map is near the viewport
+      var r = box.getBoundingClientRect();
+      var near = r.top < window.innerHeight * 2 && r.bottom > -window.innerHeight;
+      if (!loaded && (near || navigator.onLine === false)) box.classList.add('map-failed');
+    }, 10000);
+    window.addEventListener('offline', function () { if (!loaded) box.classList.add('map-failed'); });
   })();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
