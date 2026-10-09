@@ -1224,7 +1224,7 @@
   <button type="button" id="launchBarClose" aria-label="Close notice">&times;</button>
 </div>
 <section class="hero">
-  <video class="hero-video" id="heroVideo" data-src="hero.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
+  <video class="hero-video" id="heroVideo" data-src="hero.mp4" data-src-mobile="hero-mobile.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
   <div class="hero-shade"></div>
   <div class="hero-shade-video"></div>
   <div class="wrap hero-inner">
@@ -2221,7 +2221,8 @@
     v.muted = true;
     v.addEventListener('playing', function () { hero.classList.add('has-video'); });
     v.addEventListener('error', function () { hero.classList.remove('has-video'); });
-    v.src = v.getAttribute('data-src');
+    var small = window.matchMedia && window.matchMedia('(max-width: 760px)').matches;
+    v.src = (small && v.getAttribute('data-src-mobile')) || v.getAttribute('data-src');
     var go = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
     go();
     // save battery: pause while the welcome section is scrolled out of view
