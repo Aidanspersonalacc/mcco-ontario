@@ -2217,13 +2217,34 @@
     if (!hero || !v) return;
     var c = navigator.connection || {};
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce || c.saveData || /(^|-)2g$/.test(c.effectiveType || '')) return;
+    // Diagnostic: open the site with #videodebug on the end of the address to see why the video is or isn't playing.
+    var dbg = null;
+    if (/videodebug/.test(location.hash + location.search)) {
+      dbg = document.createElement('pre');
+      dbg.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:99999;margin:0;padding:10px 12px;background:#000;color:#0f0;font:12px/1.4 monospace;white-space:pre-wrap;max-height:45vh;overflow:auto';
+      document.body.appendChild(dbg);
+    }
+    var note = function (t) { if (dbg) dbg.textContent += t + '\n'; };
+    note('reduced motion: ' + reduce + ' | data saver: ' + !!c.saveData + ' | connection: ' + (c.effectiveType || 'unknown'));
+    if (reduce || c.saveData || /(^|-)2g$/.test(c.effectiveType || '')) {
+      note('RESULT: video skipped on purpose (a device setting above is on)');
+      return;
+    }
+    if (dbg) {
+      ['loadstart', 'loadedmetadata', 'canplay', 'playing', 'stalled', 'suspend', 'abort', 'error'].forEach(function (n) {
+        v.addEventListener(n, function () {
+          note(n + (n === 'error' && v.error ? ' code ' + v.error.code + ' ' + (v.error.message || '') : ''));
+        });
+      });
+      note('H.264 supported: ' + (v.canPlayType('video/mp4; codecs="avc1.64001f"') || 'NO'));
+    }
     v.muted = true;
     v.addEventListener('playing', function () { hero.classList.add('has-video'); });
     v.addEventListener('error', function () { hero.classList.remove('has-video'); });
     var small = window.matchMedia && window.matchMedia('(max-width: 760px)').matches;
     v.src = (small && v.getAttribute('data-src-mobile')) || v.getAttribute('data-src');
-    var go = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+    note('loading: ' + v.src);
+    var go = function () { var p = v.play(); if (p && p.catch) p.catch(function (e) { note('play() blocked: ' + (e && e.name) + ' ' + (e && e.message || '')); }); };
     go();
     // save battery: pause while the welcome section is scrolled out of view
     if ('IntersectionObserver' in window) {
