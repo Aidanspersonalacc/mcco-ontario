@@ -1131,6 +1131,165 @@
     .hero-welcome { opacity: 1; animation: none; transition: none; }
     .anniv-badge { animation: none; }
   }
+
+  /* ---------- Pastors and Church Workers Appreciation Sunday ---------- */
+  .appr-banner {
+    position: relative;
+    overflow: hidden;
+    padding: 84px 0 78px;
+    background:
+      radial-gradient(ellipse at 50% -8%, rgba(240,197,120,0.7) 0%, rgba(240,197,120,0) 62%),
+      linear-gradient(180deg, #FFF8EA 0%, var(--cream) 100%);
+    border-bottom: 1px solid var(--rule);
+  }
+  .appr-banner[hidden] { display: none; }
+  .appr-banner .wrap { position: relative; z-index: 1; }
+  .appr-spark {
+    position: absolute;
+    color: var(--lantern);
+    opacity: 0;
+    pointer-events: none;
+    animation: apprTwinkle 5s ease-in-out infinite;
+  }
+  .appr-spark svg { display: block; width: 100%; height: 100%; }
+  .appr-spark.s1 { width: 20px; height: 20px; top: 16%; left: 7%;   animation-delay: 0s; }
+  .appr-spark.s2 { width: 12px; height: 12px; top: 58%; left: 4%;   animation-delay: 1.7s; }
+  .appr-spark.s3 { width: 14px; height: 14px; top: 24%; right: 6%;  animation-delay: 0.9s; }
+  .appr-spark.s4 { width: 22px; height: 22px; top: 68%; right: 8%;  animation-delay: 2.6s; }
+  .appr-spark.s5 { width: 10px; height: 10px; top: 9%;  left: 28%;  animation-delay: 3.4s; }
+  .appr-spark.s6 { width: 12px; height: 12px; top: 88%; right: 28%; animation-delay: 4.1s; }
+  @keyframes apprTwinkle {
+    0%, 100% { opacity: 0;    transform: scale(0.55) rotate(0deg); }
+    50%      { opacity: 0.85; transform: scale(1) rotate(22deg); }
+  }
+  .appr-card {
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 66px 44px 48px;
+    text-align: center;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #FFFDF8 0%, #FDF6E7 100%);
+    border: 1px solid var(--lantern);
+    box-shadow: 0 0 0 7px rgba(232,163,61,0.14), 0 26px 56px rgba(74,46,34,0.16);
+    animation: heroFadeUp 0.8s ease both;
+  }
+  .appr-card::before {
+    content: "";
+    position: absolute;
+    inset: 11px;
+    border: 1px solid rgba(232,163,61,0.45);
+    border-radius: 16px;
+    pointer-events: none;
+  }
+  .appr-chip {
+    position: absolute;
+    top: -17px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 9px 22px;
+    border-radius: 999px;
+    border: 1px solid var(--lantern);
+    background: var(--dusk);
+    color: var(--lantern-soft);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 6px 16px rgba(46,27,20,0.28);
+  }
+  .appr-emblem {
+    width: 84px;
+    height: 84px;
+    margin: 0 auto 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dusk-deep);
+    background: radial-gradient(circle at 32% 28%, var(--lantern-soft) 0%, var(--lantern) 72%);
+    box-shadow: 0 0 0 6px rgba(232,163,61,0.16), 0 0 32px rgba(232,163,61,0.42);
+    animation: apprGlow 4.5s ease-in-out infinite;
+  }
+  .appr-emblem svg { width: 44px; height: 44px; }
+  .appr-emblem .cross { fill: var(--lantern-soft); }
+  @keyframes apprGlow {
+    0%, 100% { box-shadow: 0 0 0 6px rgba(232,163,61,0.16), 0 0 30px rgba(232,163,61,0.40); }
+    50%      { box-shadow: 0 0 0 10px rgba(232,163,61,0.20), 0 0 48px rgba(232,163,61,0.62); }
+  }
+  .appr-kicker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #8A5A17;
+  }
+  .appr-kicker::before, .appr-kicker::after { content: ""; width: 40px; height: 1px; background: var(--lantern); flex-shrink: 0; }
+  .appr-card h2 {
+    margin: 0 auto 16px;
+    font-size: clamp(28px, 4.6vw, 44px);
+    font-weight: 600;
+    line-height: 1.14;
+    color: var(--dusk);
+    text-wrap: balance;
+  }
+  .appr-lead { margin-bottom: 12px; font-family: 'Fraunces', serif; font-style: italic; font-size: clamp(18px, 2.4vw, 22px); color: #8A5A17; }
+  .appr-body { max-width: 56ch; margin: 0 auto; font-size: 16.5px; line-height: 1.7; color: #5E5346; text-wrap: pretty; }
+  .appr-date {
+    display: inline-block;
+    margin: 24px 0 26px;
+    padding: 9px 20px;
+    border-radius: 999px;
+    background: rgba(232,163,61,0.16);
+    border: 1px solid rgba(232,163,61,0.6);
+    color: var(--dusk);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .appr-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+  .appr-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 26px;
+    border-radius: 10px;
+    border: 1px solid var(--dusk);
+    background: transparent;
+    color: var(--dusk);
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+  }
+  .appr-btn-ghost::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #E5484D;
+    box-shadow: 0 0 0 0 rgba(229,72,77,0.7);
+    animation: livePulse 2s ease-out infinite;
+  }
+  .appr-btn-ghost:hover { background: var(--dusk); color: var(--cream); transform: translateY(-2px); }
+  @media (max-width: 640px) {
+    .appr-banner { padding: 64px 0 56px; }
+    .appr-card { padding: 60px 22px 34px; border-radius: 20px; }
+    .appr-card::before { inset: 8px; border-radius: 13px; }
+    .appr-emblem { width: 72px; height: 72px; margin-bottom: 18px; }
+    .appr-emblem svg { width: 38px; height: 38px; }
+    .appr-kicker { gap: 10px; letter-spacing: 2px; }
+    .appr-kicker::before, .appr-kicker::after { width: 20px; }
+    .appr-spark { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .appr-card, .appr-emblem, .appr-btn-ghost::before { animation: none; }
+    .appr-spark { animation: none; opacity: 0.4; }
+  }
 </style>
 </head>
 <body>
@@ -1245,6 +1404,51 @@
     <p class="live-note i18n" data-en="Watching online? We go live on Facebook on Sundays only, at 3:30 PM (Toronto time). Tap Watch Live at that time and look for the live video at the top of our page." data-tl="Manonood online? Nagla-live kami sa Facebook tuwing Linggo lamang, 3:30 ng hapon (oras sa Toronto). Pindutin ang Watch Live sa oras na iyon at hanapin ang live na video sa itaas ng aming page.">Watching online? We go live on Facebook on Sundays only, at 3:30 PM (Toronto time). Tap Watch Live at that time and look for the live video at the top of our page.</p>
   </div>
 </section>
+
+<section class="appr-banner" id="appreciation" aria-labelledby="appr-title" hidden>
+  <span class="appr-spark s1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c0.8 6.5 5.5 11.2 12 12 -6.5 0.8 -11.2 5.5 -12 12 -0.8 -6.5 -5.5 -11.2 -12 -12C6.5 11.2 11.2 6.5 12 0z"/></svg></span>
+  <span class="appr-spark s2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c0.8 6.5 5.5 11.2 12 12 -6.5 0.8 -11.2 5.5 -12 12 -0.8 -6.5 -5.5 -11.2 -12 -12C6.5 11.2 11.2 6.5 12 0z"/></svg></span>
+  <span class="appr-spark s3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c0.8 6.5 5.5 11.2 12 12 -6.5 0.8 -11.2 5.5 -12 12 -0.8 -6.5 -5.5 -11.2 -12 -12C6.5 11.2 11.2 6.5 12 0z"/></svg></span>
+  <span class="appr-spark s4" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c0.8 6.5 5.5 11.2 12 12 -6.5 0.8 -11.2 5.5 -12 12 -0.8 -6.5 -5.5 -11.2 -12 -12C6.5 11.2 11.2 6.5 12 0z"/></svg></span>
+  <span class="appr-spark s5" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c0.8 6.5 5.5 11.2 12 12 -6.5 0.8 -11.2 5.5 -12 12 -0.8 -6.5 -5.5 -11.2 -12 -12C6.5 11.2 11.2 6.5 12 0z"/></svg></span>
+  <span class="appr-spark s6" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c0.8 6.5 5.5 11.2 12 12 -6.5 0.8 -11.2 5.5 -12 12 -0.8 -6.5 -5.5 -11.2 -12 -12C6.5 11.2 11.2 6.5 12 0z"/></svg></span>
+  <div class="wrap">
+    <div class="appr-card">
+      <div class="appr-chip i18n" data-en="Today" data-tl="Ngayon">Today</div>
+      <div class="appr-emblem" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/><path class="cross" transform="translate(7.2 6.6) scale(0.4)" d="M10.5 2h3v7h7v3h-7v10h-3V12h-7V9h7V2z"/></svg>
+      </div>
+      <div class="appr-kicker i18n" data-en="With grateful hearts" data-tl="Taos-pusong pasasalamat">With grateful hearts</div>
+      <h2 id="appr-title" class="i18n" data-en="Pastors and Church Workers Appreciation Sunday" data-tl="Linggo ng Pagpapahalaga sa mga Pastor at Manggagawa ng Simbahan">Pastors and Church Workers Appreciation Sunday</h2>
+      <p class="appr-lead i18n" data-en="Thank you for serving us so faithfully." data-tl="Salamat sa tapat ninyong paglilingkod sa amin.">Thank you for serving us so faithfully.</p>
+      <p class="appr-body i18n" data-en="Today our church family sets aside time to thank our pastors and church workers — for the prayers, the preparation, the visits, and all the quiet, faithful work that keeps us going. Come celebrate them with us. Everyone is welcome." data-tl="Ngayon, naglalaan ang aming pamilya sa simbahan ng panahon upang pasalamatan ang aming mga pastor at manggagawa ng simbahan — para sa mga panalangin, sa paghahanda, sa mga pagbisita, at sa lahat ng tahimik at tapat na paglilingkod na nag-aalalay sa aming lahat. Halina at ipagdiwang sila kasama namin. Malugod na tinatanggap ang lahat.">Today our church family sets aside time to thank our pastors and church workers — for the prayers, the preparation, the visits, and all the quiet, faithful work that keeps us going. Come celebrate them with us. Everyone is welcome.</p>
+      <div class="appr-date i18n" data-en="Sunday, October 11, 2026" data-tl="Linggo, Oktubre 11, 2026">Sunday, October 11, 2026</div>
+      <div class="appr-actions">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=25+Old+York+Mills+Rd+Toronto+ON" target="_blank" rel="noopener noreferrer" class="btn-primary i18n" data-en="Get Directions" data-tl="Kumuha ng Direksyon">Get Directions</a>
+        <a href="https://www.facebook.com/methodistontario/" target="_blank" rel="noopener noreferrer" class="appr-btn-ghost i18n" data-en="Watch Live" data-tl="Manood ng Live">Watch Live</a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  // Pastors and Church Workers Appreciation Sunday is Sunday, October 11, 2026. The banner shows on that
+  // day only. The date is taken in Toronto time so members watching from other time zones see the same
+  // thing as everyone in the church; on any other day the banner simply stays hidden.
+  (function () {
+    var today;
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Toronto', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
+      var pick = function (type) { return parts.filter(function (p) { return p.type === type; })[0].value; };
+      today = pick('year') + '-' + pick('month') + '-' + pick('day');
+    } catch (e) {
+      var n = new Date();
+      today = n.getFullYear() + '-' + ('0' + (n.getMonth() + 1)).slice(-2) + '-' + ('0' + n.getDate()).slice(-2);
+    }
+    window.apprToday = today;
+    var banner = document.getElementById('appreciation');
+    if (banner && today === '2026-10-11') banner.hidden = false;
+  })();
+</script>
 
 <section class="anniv-banner" id="anniversary" aria-labelledby="anniv-title">
   <div class="wrap anniv-inner">
@@ -1487,6 +1691,11 @@
         <span class="activity-badge i18n" data-en="Every Sunday in September" data-tl="Tuwing Linggo sa Setyembre">Every Sunday in September</span>
         <h3 class="i18n" data-en="Filipino Bazaar" data-tl="Bazaar Pilipino">Filipino Bazaar</h3>
         <p class="i18n" data-en="A showcase of Filipino products, held every Sunday throughout September." data-tl="Isang palabas ng mga produktong Pilipino, gaganapin tuwing Linggo sa buong buwan ng Setyembre.">A showcase of Filipino products, held every Sunday throughout September.</p>
+      </div>
+      <div class="ministry-card" id="appreciationCard">
+        <span class="activity-badge i18n" data-en="Sunday, October 11" data-tl="Linggo, Oktubre 11">Sunday, October 11</span>
+        <h3 class="i18n" data-en="Pastors and Church Workers Appreciation Sunday" data-tl="Linggo ng Pagpapahalaga sa mga Pastor at Manggagawa ng Simbahan">Pastors and Church Workers Appreciation Sunday</h3>
+        <p class="i18n" data-en="A Sunday set aside to thank and honour our pastors and church workers for their faithful service." data-tl="Isang Linggo na nakalaan upang magpasalamat at magparangal sa aming mga pastor at manggagawa ng simbahan sa kanilang tapat na paglilingkod.">A Sunday set aside to thank and honour our pastors and church workers for their faithful service.</p>
       </div>
       <div class="ministry-card" id="annivEventCard">
         <span class="activity-badge i18n" data-en="Sunday, October 18" data-tl="Linggo, Oktubre 18">Sunday, October 18</span>
@@ -1983,6 +2192,27 @@
   })();
 </script>
 <script>
+  // Appreciation Sunday (Sunday, Oct 11, 2026): on that day the hero greeting points to the banner, and the
+  // card in Upcoming Activities is retired from the next day. Uses the Toronto date worked out next to the
+  // banner (window.apprToday). It sits after the hero greeting script above so that it takes priority.
+  (function () {
+    var day = window.apprToday;
+    if (!day) return;
+    var card = document.getElementById('appreciationCard');
+    if (card && day > '2026-10-11') card.style.display = 'none';
+    var pill = document.getElementById('heroWelcome');
+    var pillText = document.getElementById('heroWelcomeText');
+    if (day === '2026-10-11' && pill && pillText) {
+      var en = 'Happy Pastors and Church Workers Appreciation Sunday';
+      var tl = 'Maligayang Linggo ng Pagpapahalaga sa mga Pastor at Manggagawa ng Simbahan';
+      pill.setAttribute('href', '#appreciation');
+      pillText.setAttribute('data-en', en);
+      pillText.setAttribute('data-tl', tl);
+      pillText.textContent = document.documentElement.lang === 'tl' ? tl : en;
+    }
+  })();
+</script>
+<script>
   // Little surprises for curious visitors. Nothing here affects the rest of the page.
   (function () {
     // [English title, English line, Tagalog title, Tagalog line]
@@ -2257,7 +2487,7 @@
 <script>
   // New-website notice. Change LAUNCH to the day the site goes live; it shows for SHOW_DAYS days, then hides itself.
   (function () {
-    var LAUNCH = new Date(2026, 9, 5);   // year, month (0 = Jan, so 9 = Oct), day
+    var LAUNCH = new Date(2026, 9, 11);   // year, month (0 = Jan, so 9 = Oct), day
     var SHOW_DAYS = 14;
     var bar = document.getElementById('launchBar');
     var close = document.getElementById('launchBarClose');
