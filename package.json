@@ -1,0 +1,16 @@
+{
+  "name": "mcco-ontario",
+  "version": "1.0.0",
+  "description": "Methodist Congregational Church of Ontario website",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "dev": "python3 -m http.server 8000 || python -m SimpleHTTPServer 8000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
