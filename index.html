@@ -1177,7 +1177,7 @@
     .anniv-badge { animation: none; }
   }
 
-  /* ---------- Pastors and Church Workers Appreciation Sunday ---------- */
+  /* ---------- Pastors and Church Workers Appreciation Month ---------- */
   .appr-banner {
     position: relative;
     overflow: hidden;
@@ -1459,15 +1459,15 @@
   <span class="appr-spark s6" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c0.8 6.5 5.5 11.2 12 12 -6.5 0.8 -11.2 5.5 -12 12 -0.8 -6.5 -5.5 -11.2 -12 -12C6.5 11.2 11.2 6.5 12 0z"/></svg></span>
   <div class="wrap">
     <div class="appr-card">
-      <div class="appr-chip i18n" data-en="Today" data-tl="Ngayon">Today</div>
+      <div class="appr-chip i18n" data-en="This Month" data-tl="Ngayong Buwan">This Month</div>
       <div class="appr-emblem" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path fill="currentColor" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/><path class="cross" transform="translate(7.2 6.6) scale(0.4)" d="M10.5 2h3v7h7v3h-7v10h-3V12h-7V9h7V2z"/></svg>
       </div>
       <div class="appr-kicker i18n" data-en="With grateful hearts" data-tl="Taos-pusong pasasalamat">With grateful hearts</div>
-      <h2 id="appr-title" class="i18n" data-en="Pastors and Church Workers Appreciation Sunday" data-tl="Linggo ng Pagpapahalaga sa mga Pastor at Manggagawa ng Simbahan">Pastors and Church Workers Appreciation Sunday</h2>
+      <h2 id="appr-title" class="i18n" data-en="Pastors and Church Workers Appreciation Month" data-tl="Buwan ng Pagpapahalaga sa mga Pastor at Manggagawa ng Simbahan">Pastors and Church Workers Appreciation Month</h2>
       <p class="appr-lead i18n" data-en="Thank you for serving us so faithfully." data-tl="Salamat sa tapat ninyong paglilingkod sa amin.">Thank you for serving us so faithfully.</p>
-      <p class="appr-body i18n" data-en="Today our church family sets aside time to thank our pastors and church workers — for the prayers, the preparation, the visits, and all the quiet, faithful work that keeps us going. Come celebrate them with us. Everyone is welcome." data-tl="Ngayon, naglalaan ang aming pamilya sa simbahan ng panahon upang pasalamatan ang aming mga pastor at manggagawa ng simbahan — para sa mga panalangin, sa paghahanda, sa mga pagbisita, at sa lahat ng tahimik at tapat na paglilingkod na nag-aalalay sa aming lahat. Halina at ipagdiwang sila kasama namin. Malugod na tinatanggap ang lahat.">Today our church family sets aside time to thank our pastors and church workers — for the prayers, the preparation, the visits, and all the quiet, faithful work that keeps us going. Come celebrate them with us. Everyone is welcome.</p>
-      <div class="appr-date i18n" data-en="Sunday, October 11, 2026" data-tl="Linggo, Oktubre 11, 2026">Sunday, October 11, 2026</div>
+      <p class="appr-body i18n" data-en="This month our church family sets aside time to thank our pastors and church workers — for the prayers, the preparation, the visits, and all the quiet, faithful work that keeps us going. Come celebrate them with us. Everyone is welcome." data-tl="Ngayong buwan, naglalaan ang aming pamilya sa simbahan ng panahon upang pasalamatan ang aming mga pastor at manggagawa ng simbahan — para sa mga panalangin, sa paghahanda, sa mga pagbisita, at sa lahat ng tahimik at tapat na paglilingkod na nag-aalalay sa aming lahat. Halina at ipagdiwang sila kasama namin. Malugod na tinatanggap ang lahat.">This month our church family sets aside time to thank our pastors and church workers — for the prayers, the preparation, the visits, and all the quiet, faithful work that keeps us going. Come celebrate them with us. Everyone is welcome.</p>
+      <div class="appr-date i18n" data-en="October 2026" data-tl="Oktubre 2026">October 2026</div>
       <div class="appr-actions">
         <a href="https://www.google.com/maps/search/?api=1&amp;query=25+Old+York+Mills+Rd+Toronto+ON" target="_blank" rel="noopener noreferrer" class="btn-primary i18n" data-en="Get Directions" data-tl="Kumuha ng Direksyon">Get Directions</a>
         <a href="https://www.facebook.com/methodistontario/" target="_blank" rel="noopener noreferrer" class="appr-btn-ghost i18n" data-en="Watch Live" data-tl="Manood ng Live">Watch Live</a>
@@ -1476,8 +1476,8 @@
   </div>
 </section>
 <script>
-  // Pastors and Church Workers Appreciation Sunday is Sunday, October 11, 2026. The banner shows on that
-  // day only. The date is taken in Toronto time so members watching from other time zones see the same
+  // Pastors and Church Workers Appreciation Month is October 2026. The banner shows from Oct 1 to Oct 31.
+  // The date is taken in Toronto time so members watching from other time zones see the same
   // thing as everyone in the church; on any other day the banner simply stays hidden.
   (function () {
     var today;
@@ -1491,7 +1491,7 @@
     }
     window.apprToday = today;
     var banner = document.getElementById('appreciation');
-    if (banner && today === '2026-10-11') banner.hidden = false;
+    if (banner && today >= '2026-10-01' && today <= '2026-10-31') banner.hidden = false;
   })();
 </script>
 
@@ -1747,9 +1747,9 @@
         <p class="i18n" data-en="A showcase of Filipino products, held every Sunday throughout September." data-tl="Isang palabas ng mga produktong Pilipino, gaganapin tuwing Linggo sa buong buwan ng Setyembre.">A showcase of Filipino products, held every Sunday throughout September.</p>
       </div>
       <div class="ministry-card" id="appreciationCard">
-        <span class="activity-badge i18n" data-en="Sunday, October 11" data-tl="Linggo, Oktubre 11">Sunday, October 11</span>
-        <h3 class="i18n" data-en="Pastors and Church Workers Appreciation Sunday" data-tl="Linggo ng Pagpapahalaga sa mga Pastor at Manggagawa ng Simbahan">Pastors and Church Workers Appreciation Sunday</h3>
-        <p class="i18n" data-en="A Sunday set aside to thank and honour our pastors and church workers for their faithful service." data-tl="Isang Linggo na nakalaan upang magpasalamat at magparangal sa aming mga pastor at manggagawa ng simbahan sa kanilang tapat na paglilingkod.">A Sunday set aside to thank and honour our pastors and church workers for their faithful service.</p>
+        <span class="activity-badge i18n" data-en="Throughout October" data-tl="Sa Buong Oktubre">Throughout October</span>
+        <h3 class="i18n" data-en="Pastors and Church Workers Appreciation Month" data-tl="Buwan ng Pagpapahalaga sa mga Pastor at Manggagawa ng Simbahan">Pastors and Church Workers Appreciation Month</h3>
+        <p class="i18n" data-en="A month set aside to thank and honour our pastors and church workers for their faithful service." data-tl="Isang buwan na nakalaan upang magpasalamat at magparangal sa aming mga pastor at manggagawa ng simbahan sa kanilang tapat na paglilingkod.">A month set aside to thank and honour our pastors and church workers for their faithful service.</p>
       </div>
       <div class="ministry-card" id="annivEventCard">
         <span class="activity-badge i18n" data-en="Sunday, October 18" data-tl="Linggo, Oktubre 18">Sunday, October 18</span>
@@ -2291,19 +2291,20 @@
   })();
 </script>
 <script>
-  // Appreciation Sunday (Sunday, Oct 11, 2026): on that day the hero greeting points to the banner, and the
-  // card in Upcoming Activities is retired from the next day. Uses the Toronto date worked out next to the
-  // banner (window.apprToday). It sits after the hero greeting script above so that it takes priority.
+  // Appreciation Month (October 2026): from Oct 1 to Oct 17 the hero greeting points to the banner (from Oct 18
+  // the anniversary greeting takes over), and the card in Upcoming Activities is retired after Oct 31. Uses the
+  // Toronto date worked out next to the banner (window.apprToday). It sits after the hero greeting script above
+  // so that it takes priority.
   (function () {
     var day = window.apprToday;
     if (!day) return;
     var card = document.getElementById('appreciationCard');
-    if (card && day > '2026-10-11') card.style.display = 'none';
+    if (card && day > '2026-10-31') card.style.display = 'none';
     var pill = document.getElementById('heroWelcome');
     var pillText = document.getElementById('heroWelcomeText');
-    if (day === '2026-10-11' && pill && pillText) {
-      var en = 'Happy Pastors and Church Workers Appreciation Sunday';
-      var tl = 'Maligayang Linggo ng Pagpapahalaga sa mga Pastor at Manggagawa ng Simbahan';
+    if (day >= '2026-10-01' && day <= '2026-10-17' && pill && pillText) {
+      var en = 'Happy Pastors and Church Workers Appreciation Month';
+      var tl = 'Maligayang Buwan ng Pagpapahalaga sa mga Pastor at Manggagawa ng Simbahan';
       pill.setAttribute('href', '#appreciation');
       pillText.setAttribute('data-en', en);
       pillText.setAttribute('data-tl', tl);
