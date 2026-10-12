@@ -1100,6 +1100,51 @@
     .anniv-meta { justify-content: center; }
   }
 
+  /* ---------- Anniversary countdown ---------- */
+  .anniv-countdown { margin: 4px 0 24px; }
+  .anniv-countdown[hidden] { display: none; }
+  .anniv-countdown .cd-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--lantern-soft);
+    margin-bottom: 10px;
+  }
+  .anniv-countdown .cd-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+  .anniv-countdown .cd-unit {
+    min-width: 76px;
+    padding: 12px 10px 10px;
+    text-align: center;
+    border-radius: 14px;
+    background: rgba(232,163,61,0.14);
+    border: 1px solid rgba(232,163,61,0.45);
+  }
+  .anniv-countdown .cd-num {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--lantern);
+    font-variant-numeric: tabular-nums;
+  }
+  .anniv-countdown .cd-name {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0.85;
+  }
+  @media (max-width: 700px) {
+    .anniv-countdown .cd-grid { justify-content: center; gap: 8px; }
+    .anniv-countdown .cd-unit { min-width: 64px; padding: 10px 6px 8px; }
+    .anniv-countdown .cd-num { font-size: 28px; }
+  }
+
   /* ---------- Welcome touches for the anniversary ---------- */
   .hero-welcome {
     display: inline-flex;
@@ -1465,6 +1510,15 @@
       <p id="annivText" class="i18n" data-en="Eleven years of worship, fellowship, and family — all by God's grace. Join us today as we celebrate, and welcome to our new website." data-tl="Labing-isang taon ng pagsamba, pagsasama-sama, at pamilya — sa biyaya ng Diyos. Samahan kami ngayon sa pagdiriwang, at maligayang pagdating sa aming bagong website.">Eleven years of worship, fellowship, and family — all by God's grace. Join us today as we celebrate, and welcome to our new website.</p>
       <p class="anniv-welcome i18n" data-en="Everyone is welcome — come as you are, and bring a friend or neighbour." data-tl="Malugod na tinatanggap ang lahat — halina kayo, at isama ang kaibigan o kapitbahay.">Everyone is welcome — come as you are, and bring a friend or neighbour.</p>
       <div id="annivDate" class="anniv-date i18n" data-en="Sunday, October 18, 2026" data-tl="Linggo, Oktubre 18, 2026">Sunday, October 18, 2026</div>
+      <div id="annivCountdown" class="anniv-countdown" role="timer" hidden>
+        <div class="cd-label i18n" data-en="Counting down to our anniversary, 4:00 PM" data-tl="Bilang pababa sa aming anibersaryo, 4:00 PM">Counting down to our anniversary, 4:00 PM</div>
+        <div class="cd-grid">
+          <div class="cd-unit"><span class="cd-num" id="cdDays">0</span><span class="cd-name i18n" id="cdDaysName" data-en="Days" data-tl="Araw">Days</span></div>
+          <div class="cd-unit"><span class="cd-num" id="cdHours">00</span><span class="cd-name i18n" id="cdHoursName" data-en="Hours" data-tl="Oras">Hours</span></div>
+          <div class="cd-unit"><span class="cd-num" id="cdMins">00</span><span class="cd-name i18n" id="cdMinsName" data-en="Minutes" data-tl="Minuto">Minutes</span></div>
+          <div class="cd-unit"><span class="cd-num" id="cdSecs">00</span><span class="cd-name i18n" id="cdSecsName" data-en="Seconds" data-tl="Segundo">Seconds</span></div>
+        </div>
+      </div>
       <div class="anniv-actions">
         <a href="https://www.google.com/maps/search/?api=1&query=25+Old+York+Mills+Rd+Toronto+ON" target="_blank" rel="noopener noreferrer" class="btn-primary i18n" data-en="Get Directions" data-tl="Kumuha ng Direksyon">Get Directions</a>
         <a href="#upcoming-activities" class="btn-ghost i18n" data-en="See All Events" data-tl="Tingnan ang Lahat ng Gawain">See All Events</a>
@@ -1703,7 +1757,7 @@
         <p class="i18n" data-en="Celebrating 11 years together as a church family." data-tl="Ipinagdiriwang ang 11 taon bilang pamilyang simbahan.">Celebrating 11 years together as a church family.</p>
       </div>
       <div class="ministry-card">
-        <span class="activity-badge i18n" data-en="Second Sunday of November" data-tl="Ikalawang Linggo ng Nobyembre">Second Sunday of November</span>
+        <span class="activity-badge i18n" data-en="Second Sunday of October" data-tl="Ikalawang Linggo ng Oktubre">Second Sunday of October</span>
         <h3 class="i18n" data-en="Thanksgiving Sunday" data-tl="Linggo ng Pasasalamat">Thanksgiving Sunday</h3>
         <p class="i18n" data-en="A service set aside to give thanks together as a congregation." data-tl="Isang serbisyo na nakalaan para magpasalamat nang magkasama bilang kongregasyon.">A service set aside to give thanks together as a congregation.</p>
       </div>
@@ -2145,6 +2199,51 @@
     set(document.getElementById('annivText'), ['Thank you to everyone who joined us for our 11th anniversary — and welcome to our new website. Come worship with us any Sunday.',
              'Salamat sa lahat ng sumama sa amin sa aming ika-11 anibersaryo — at maligayang pagdating sa aming bagong website. Sumamba kasama namin tuwing Linggo.']);
     set(document.getElementById('annivDate'), ['Celebrated October 18, 2026', 'Ipinagdiwang noong Oktubre 18, 2026']);
+  })();
+</script>
+<script>
+  // Countdown to the 11th anniversary service (Sunday, Oct 18, 2026 at 4:00 PM, visitor's local time). It keeps
+  // running through the morning of the day itself and hides at 4:00 PM, or if the banner is hidden.
+  (function () {
+    var box = document.getElementById('annivCountdown');
+    var banner = document.getElementById('anniversary');
+    if (!box || !banner) return;
+    var target = new Date(2026, 9, 18, 16, 0, 0).getTime();
+    var num = {
+      d: document.getElementById('cdDays'), h: document.getElementById('cdHours'),
+      m: document.getElementById('cdMins'), s: document.getElementById('cdSecs')
+    };
+    var name = {
+      d: document.getElementById('cdDaysName'), h: document.getElementById('cdHoursName'),
+      m: document.getElementById('cdMinsName'), s: document.getElementById('cdSecsName')
+    };
+    var timer = null;
+    function pad(n) { return n < 10 ? '0' + n : String(n); }
+    function label(el, en, tl) {
+      if (!el || el.getAttribute('data-en') === en) return;
+      el.setAttribute('data-en', en);
+      el.setAttribute('data-tl', tl);
+      el.textContent = document.documentElement.lang === 'tl' ? tl : en;
+    }
+    function tick() {
+      var diff = target - Date.now();
+      if (diff <= 0 || banner.style.display === 'none') {
+        box.hidden = true;
+        if (timer) clearInterval(timer);
+        return;
+      }
+      var t = Math.floor(diff / 1000);
+      var d = Math.floor(t / 86400), h = Math.floor((t % 86400) / 3600), m = Math.floor((t % 3600) / 60), s = t % 60;
+      num.d.textContent = d; num.h.textContent = pad(h); num.m.textContent = pad(m); num.s.textContent = pad(s);
+      label(name.d, d === 1 ? 'Day' : 'Days', 'Araw');
+      label(name.h, h === 1 ? 'Hour' : 'Hours', 'Oras');
+      label(name.m, m === 1 ? 'Minute' : 'Minutes', 'Minuto');
+      label(name.s, s === 1 ? 'Second' : 'Seconds', 'Segundo');
+      box.setAttribute('aria-label', d + ' days, ' + h + ' hours and ' + m + ' minutes until our anniversary');
+      box.hidden = false;
+    }
+    tick();
+    timer = setInterval(tick, 1000);
   })();
 </script>
 <script>
