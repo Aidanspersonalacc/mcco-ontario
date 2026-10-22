@@ -1012,171 +1012,6 @@
   footer .foot-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
   footer .foot-links a:hover { color: var(--lantern-soft); }
 
-  /* ---------- 11th Anniversary announcement ---------- */
-  .anniv-banner {
-    background:
-      radial-gradient(ellipse at 15% 20%, rgba(232,163,61,0.22) 0%, transparent 55%),
-      linear-gradient(135deg, var(--dusk) 0%, var(--dusk-deep) 100%);
-    color: var(--cream);
-    padding: 64px 0;
-    position: relative;
-    overflow: hidden;
-    border-top: 1px solid rgba(232,163,61,0.35);
-    border-bottom: 1px solid rgba(232,163,61,0.35);
-  }
-  .anniv-inner {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 44px;
-    align-items: center;
-  }
-  .anniv-badge {
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
-    border: 2px solid var(--lantern);
-    box-shadow: 0 0 0 8px rgba(232,163,61,0.12), 0 0 40px rgba(232,163,61,0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex-shrink: 0;
-  }
-  .anniv-badge .num {
-    font-family: 'Fraunces', serif;
-    font-size: 68px;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--lantern);
-  }
-  .anniv-badge .num sup { font-size: 24px; vertical-align: super; margin-left: 2px; }
-  .anniv-badge .sub {
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--lantern-soft);
-    margin-top: 8px;
-    font-weight: 600;
-  }
-  .anniv-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
-  .anniv-text .eyebrow { margin-bottom: 0; }
-  .anniv-chip {
-    background: var(--lantern);
-    color: var(--dusk-deep);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 999px;
-  }
-  .anniv-chip[hidden] { display: none; }
-  .anniv-text h2 {
-    font-size: clamp(28px, 4vw, 40px);
-    line-height: 1.15;
-    margin-bottom: 14px;
-    color: var(--cream);
-  }
-  .anniv-text p { max-width: 58ch; opacity: 0.92; margin-bottom: 8px; }
-  .anniv-date {
-    display: inline-block;
-    margin: 10px 0 22px;
-    padding: 8px 16px;
-    border-radius: 999px;
-    background: rgba(232,163,61,0.16);
-    border: 1px solid rgba(232,163,61,0.5);
-    color: var(--lantern-soft);
-    font-weight: 600;
-    font-size: 15px;
-  }
-  .anniv-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-  @media (max-width: 700px) {
-    .anniv-banner { padding: 48px 0; }
-    .anniv-inner { grid-template-columns: 1fr; gap: 28px; justify-items: center; text-align: center; }
-    .anniv-badge { width: 140px; height: 140px; }
-    .anniv-badge .num { font-size: 54px; }
-    .anniv-actions { justify-content: center; }
-    .anniv-meta { justify-content: center; }
-  }
-
-  /* ---------- Anniversary countdown ---------- */
-  .anniv-countdown { margin: 4px 0 24px; }
-  .anniv-countdown[hidden] { display: none; }
-  .anniv-countdown .cd-label {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--lantern-soft);
-    margin-bottom: 10px;
-  }
-  .anniv-countdown .cd-grid { display: flex; gap: 12px; flex-wrap: wrap; }
-  .anniv-countdown .cd-unit {
-    min-width: 76px;
-    padding: 12px 10px 10px;
-    text-align: center;
-    border-radius: 14px;
-    background: rgba(232,163,61,0.14);
-    border: 1px solid rgba(232,163,61,0.45);
-  }
-  .anniv-countdown .cd-num {
-    display: block;
-    font-family: 'Fraunces', serif;
-    font-size: 34px;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--lantern);
-    font-variant-numeric: tabular-nums;
-  }
-  .anniv-countdown .cd-name {
-    display: block;
-    margin-top: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--cream);
-    opacity: 0.85;
-  }
-  @media (max-width: 700px) {
-    .anniv-countdown .cd-grid { justify-content: center; gap: 8px; }
-    .anniv-countdown .cd-unit { min-width: 64px; padding: 10px 6px 8px; }
-    .anniv-countdown .cd-num { font-size: 28px; }
-  }
-
-  /* ---------- Welcome touches for the anniversary ---------- */
-  .hero-welcome {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 22px;
-    padding: 9px 18px;
-    border-radius: 999px;
-    background: rgba(232,163,61,0.16);
-    border: 1px solid rgba(232,163,61,0.55);
-    color: var(--lantern-soft);
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.3;
-    text-decoration: none;
-    opacity: 0;
-    animation: heroFadeUp 0.7s ease 0.1s forwards;
-    transition: background 0.25s, transform 0.25s;
-  }
-  .hero-welcome:hover { background: rgba(232,163,61,0.26); transform: translateY(-1px); }
-  .hero-welcome svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--lantern); }
-  .anniv-welcome { font-family: 'Fraunces', serif; font-style: italic; font-size: 18px; color: var(--lantern-soft); opacity: 1 !important; margin: 4px 0 6px; }
-  @keyframes annivGlow {
-    0%, 100% { box-shadow: 0 0 0 8px rgba(232,163,61,0.12), 0 0 40px rgba(232,163,61,0.30); }
-    50%      { box-shadow: 0 0 0 12px rgba(232,163,61,0.16), 0 0 56px rgba(232,163,61,0.48); }
-  }
-  .anniv-badge { animation: annivGlow 4.5s ease-in-out infinite; }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-welcome { opacity: 1; animation: none; transition: none; }
-    .anniv-badge { animation: none; }
-  }
-
   /* ---------- Pastors and Church Workers Appreciation Month ---------- */
   .appr-banner {
     position: relative;
@@ -1433,7 +1268,6 @@
   <div class="hero-shade-video"></div>
   <div class="wrap hero-inner">
     <img width="166" height="170" class="hero-logo" draggable="false" src="images/logo-icon.webp" alt="Methodist Congregational Church of Ontario logo">
-    <a class="hero-welcome" id="heroWelcome" href="#anniversary"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 6.6L21 9.3l-5.2 4.3L17.5 21 12 17.2 6.5 21l1.7-7.4L3 9.3l6.6-.7L12 2z"/></svg><span class="i18n" id="heroWelcomeText" data-en="Happy 11th Anniversary — welcome to our new website" data-tl="Maligayang Ika-11 Anibersaryo — maligayang pagdating sa aming bagong website">Happy 11th Anniversary — welcome to our new website</span></a>
     <div class="eyebrow">Methodist Congregational Church of Ontario</div>
     <h1><span style="display:block; font-size:clamp(28px, 4vw, 40px); font-weight:700; font-style:italic; color:var(--lantern); letter-spacing:0.5px; margin-bottom:14px;">Mabuhay Kumusta!</span><span class="i18n" data-en="Come as you are, leave feeling at home." data-tl="Halina't maging ikaw, umuwing tila nasa bahay.">Come as you are, leave feeling at home.</span></h1>
     <p class="i18n" data-en="Step through our doors and you'll feel it right away — warm light, familiar faces, and a room full of people glad you're there. It's a special atmosphere we've built together, one Sunday at a time, and we can't wait to share it with you." data-tl="Sa sandaling makapasok ka, mararamdaman mo agad ito — mainit na liwanag, pamilyar na mukha, at isang silid na puno ng taong masaya kang naroon. Ito ay isang natatanging kapaligiran na sama-sama naming binuo, isang Linggo sa isang pagkakataon, at hindi kami makapaghintay na ibahagi ito sa iyo.">Step through our doors and you'll feel it right away — warm light, familiar faces, and a room full of people glad you're there. It's a special atmosphere we've built together, one Sunday at a time, and we can't wait to share it with you.</p>
@@ -1494,38 +1328,6 @@
     if (banner && today >= '2026-10-01' && today <= '2026-10-31') banner.hidden = false;
   })();
 </script>
-
-<section class="anniv-banner" id="anniversary" aria-labelledby="anniv-title">
-  <div class="wrap anniv-inner">
-    <div class="anniv-badge" aria-hidden="true">
-      <div class="num">11<sup>th</sup></div>
-      <div class="sub i18n" data-en="Anniversary" data-tl="Anibersaryo">Anniversary</div>
-    </div>
-    <div class="anniv-text">
-      <div class="anniv-meta">
-        <div class="eyebrow i18n" id="annivEyebrow" data-en="Today's the day" data-tl="Ngayon na ang araw">Today's the day</div>
-        <span class="anniv-chip i18n" id="annivChip" data-en="New Website" data-tl="Bagong Website">New Website</span>
-      </div>
-      <h2 id="anniv-title" class="i18n" data-en="11 years of God's faithfulness, and you're welcome here" data-tl="11 taon ng katapatan ng Diyos, at malugod kang tinatanggap dito">11 years of God's faithfulness, and you're welcome here</h2>
-      <p id="annivText" class="i18n" data-en="Eleven years of worship, fellowship, and family — all by God's grace. Join us today as we celebrate, and welcome to our new website." data-tl="Labing-isang taon ng pagsamba, pagsasama-sama, at pamilya — sa biyaya ng Diyos. Samahan kami ngayon sa pagdiriwang, at maligayang pagdating sa aming bagong website.">Eleven years of worship, fellowship, and family — all by God's grace. Join us today as we celebrate, and welcome to our new website.</p>
-      <p class="anniv-welcome i18n" data-en="Everyone is welcome — come as you are, and bring a friend or neighbour." data-tl="Malugod na tinatanggap ang lahat — halina kayo, at isama ang kaibigan o kapitbahay.">Everyone is welcome — come as you are, and bring a friend or neighbour.</p>
-      <div id="annivDate" class="anniv-date i18n" data-en="Sunday, October 18, 2026" data-tl="Linggo, Oktubre 18, 2026">Sunday, October 18, 2026</div>
-      <div id="annivCountdown" class="anniv-countdown" role="timer" hidden>
-        <div class="cd-label i18n" data-en="Counting down to our anniversary, 3:30 PM" data-tl="Bilang pababa sa aming anibersaryo, 3:30 PM">Counting down to our anniversary, 3:30 PM</div>
-        <div class="cd-grid">
-          <div class="cd-unit"><span class="cd-num" id="cdDays">0</span><span class="cd-name i18n" id="cdDaysName" data-en="Days" data-tl="Araw">Days</span></div>
-          <div class="cd-unit"><span class="cd-num" id="cdHours">00</span><span class="cd-name i18n" id="cdHoursName" data-en="Hours" data-tl="Oras">Hours</span></div>
-          <div class="cd-unit"><span class="cd-num" id="cdMins">00</span><span class="cd-name i18n" id="cdMinsName" data-en="Minutes" data-tl="Minuto">Minutes</span></div>
-          <div class="cd-unit"><span class="cd-num" id="cdSecs">00</span><span class="cd-name i18n" id="cdSecsName" data-en="Seconds" data-tl="Segundo">Seconds</span></div>
-        </div>
-      </div>
-      <div class="anniv-actions">
-        <a href="https://www.google.com/maps/search/?api=1&query=25+Old+York+Mills+Rd+Toronto+ON" target="_blank" rel="noopener noreferrer" class="btn-primary i18n" data-en="Get Directions" data-tl="Kumuha ng Direksyon">Get Directions</a>
-        <a href="#upcoming-activities" class="btn-ghost i18n" data-en="See All Events" data-tl="Tingnan ang Lahat ng Gawain">See All Events</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <div class="verse-banner">
   <div class="wrap">
@@ -1750,11 +1552,6 @@
         <span class="activity-badge i18n" data-en="Throughout October" data-tl="Sa Buong Oktubre">Throughout October</span>
         <h3 class="i18n" data-en="Pastors and Church Workers Appreciation Month" data-tl="Buwan ng Pagpapahalaga sa mga Pastor at Manggagawa ng Simbahan">Pastors and Church Workers Appreciation Month</h3>
         <p class="i18n" data-en="A month set aside to thank and honour our pastors and church workers for their faithful service." data-tl="Isang buwan na nakalaan upang magpasalamat at magparangal sa aming mga pastor at manggagawa ng simbahan sa kanilang tapat na paglilingkod.">A month set aside to thank and honour our pastors and church workers for their faithful service.</p>
-      </div>
-      <div class="ministry-card" id="annivEventCard">
-        <span class="activity-badge i18n" data-en="Sunday, October 18" data-tl="Linggo, Oktubre 18">Sunday, October 18</span>
-        <h3 class="i18n" data-en="11th Church Anniversary" data-tl="Ika-11 Anibersaryo ng Simbahan">11th Church Anniversary</h3>
-        <p class="i18n" data-en="Celebrating 11 years together as a church family." data-tl="Ipinagdiriwang ang 11 taon bilang pamilyang simbahan.">Celebrating 11 years together as a church family.</p>
       </div>
       <div class="ministry-card">
         <span class="activity-badge i18n" data-en="Second Sunday of October" data-tl="Ikalawang Linggo ng Oktubre">Second Sunday of October</span>
@@ -2212,87 +2009,6 @@
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script>
-  // The default markup is the anniversary-day welcome (Sunday, Oct 18, 2026).
-  // After the day it softens into a thank-you, and from Nov 2 the banner is hidden (visitor's local date).
-  (function () {
-    var banner = document.getElementById('anniversary');
-    if (!banner) return;
-    var now = new Date();
-    var day = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    var event = new Date(2026, 9, 18), hideFrom = new Date(2026, 10, 2);
-    if (day >= hideFrom) { banner.style.display = 'none'; return; }
-    // Before the big day, "Today's the day" would be wrong, so show an upcoming-event version instead.
-    // (set() is a function declaration below, so it is available here.)
-    if (day < event) {
-      set(document.getElementById('annivEyebrow'), ['Coming up', 'Malapit na']);
-      set(document.getElementById('anniv-title'), ["11 years of God's faithfulness, and you're welcome here", "11 taon ng katapatan ng Diyos, at malugod kang tinatanggap dito"]);
-      set(document.getElementById('annivText'), ["Eleven years of worship, fellowship, and family \u2014 all by God's grace. Join us on Sunday, October 18 as we celebrate together.",
-               'Labing-isang taon ng pagsamba, pagsasama-sama, at pamilya \u2014 sa biyaya ng Diyos. Samahan kami sa Linggo, Oktubre 18 habang sama-sama kaming nagdiriwang.']);
-      var chip = document.getElementById('annivChip'); if (chip) chip.hidden = true;
-      var note = document.getElementById('launchNote'); if (note) note.hidden = true;
-      return;
-    }
-    if (day <= event) return;
-
-    function set(el, pair) {
-      if (!el) return;
-      el.setAttribute('data-en', pair[0]);
-      el.setAttribute('data-tl', pair[1]);
-      el.textContent = pair[0];
-    }
-    set(document.getElementById('annivEyebrow'), ['Church Anniversary', 'Anibersaryo ng Simbahan']);
-    set(document.getElementById('anniv-title'), ['We celebrated 11 years together', 'Ipinagdiwang namin ang 11 taon nang magkakasama']);
-    set(document.getElementById('annivText'), ['Thank you to everyone who joined us for our 11th anniversary — and welcome to our new website. Come worship with us any Sunday.',
-             'Salamat sa lahat ng sumama sa amin sa aming ika-11 anibersaryo — at maligayang pagdating sa aming bagong website. Sumamba kasama namin tuwing Linggo.']);
-    set(document.getElementById('annivDate'), ['Celebrated October 18, 2026', 'Ipinagdiwang noong Oktubre 18, 2026']);
-  })();
-</script>
-<script>
-  // Countdown to the 11th anniversary service (Sunday, Oct 18, 2026 at 4:00 PM, visitor's local time). It keeps
-  // running through the morning of the day itself and hides at 4:00 PM, or if the banner is hidden.
-  (function () {
-    var box = document.getElementById('annivCountdown');
-    var banner = document.getElementById('anniversary');
-    if (!box || !banner) return;
-    var target = new Date(2026, 9, 18, 15, 30, 0).getTime();
-    var num = {
-      d: document.getElementById('cdDays'), h: document.getElementById('cdHours'),
-      m: document.getElementById('cdMins'), s: document.getElementById('cdSecs')
-    };
-    var name = {
-      d: document.getElementById('cdDaysName'), h: document.getElementById('cdHoursName'),
-      m: document.getElementById('cdMinsName'), s: document.getElementById('cdSecsName')
-    };
-    var timer = null;
-    function pad(n) { return n < 10 ? '0' + n : String(n); }
-    function label(el, en, tl) {
-      if (!el || el.getAttribute('data-en') === en) return;
-      el.setAttribute('data-en', en);
-      el.setAttribute('data-tl', tl);
-      el.textContent = document.documentElement.lang === 'tl' ? tl : en;
-    }
-    function tick() {
-      var diff = target - Date.now();
-      if (diff <= 0 || banner.style.display === 'none') {
-        box.hidden = true;
-        if (timer) clearInterval(timer);
-        return;
-      }
-      var t = Math.floor(diff / 1000);
-      var d = Math.floor(t / 86400), h = Math.floor((t % 86400) / 3600), m = Math.floor((t % 3600) / 60), s = t % 60;
-      num.d.textContent = d; num.h.textContent = pad(h); num.m.textContent = pad(m); num.s.textContent = pad(s);
-      label(name.d, d === 1 ? 'Day' : 'Days', 'Araw');
-      label(name.h, h === 1 ? 'Hour' : 'Hours', 'Oras');
-      label(name.m, m === 1 ? 'Minute' : 'Minutes', 'Minuto');
-      label(name.s, s === 1 ? 'Second' : 'Seconds', 'Segundo');
-      box.setAttribute('aria-label', d + ' days, ' + h + ' hours and ' + m + ' minutes until our anniversary');
-      box.hidden = false;
-    }
-    tick();
-    timer = setInterval(tick, 1000);
-  })();
-</script>
-<script>
   // Filipino Bazaar ran every Sunday in September 2026 - retire the card from Oct 1.
   (function () {
     var card = document.getElementById('bazaarCard');
@@ -2303,59 +2019,13 @@
   })();
 </script>
 <script>
-  // The 11th Anniversary card in "Upcoming Activities" is retired the day after the event.
-  (function () {
-    var card = document.getElementById('annivEventCard');
-    if (!card) return;
-    var now = new Date();
-    var day = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    if (day > new Date(2026, 9, 18)) card.style.display = 'none';
-  })();
-</script>
-<script>
-  // Hero welcome pill: anniversary-day text is the default; it changes after the anniversary (visitor's local date).
-  (function () {
-    var pill = document.getElementById('heroWelcome');
-    var pillText = document.getElementById('heroWelcomeText');
-    if (!pill || !pillText) return;
-    var now = new Date();
-    var day = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    var event = new Date(2026, 9, 18), hideFrom = new Date(2026, 10, 2);
-    function set(en, tl) {
-      pillText.setAttribute('data-en', en);
-      pillText.setAttribute('data-tl', tl);
-      pillText.textContent = en;
-    }
-    if (day >= hideFrom) {
-      pill.setAttribute('href', '#expect');
-      set('Welcome — we\'re so glad you\'re here', 'Maligayang pagdating — masaya kaming narito ka');
-    } else if (day > event) {
-      set('We celebrated 11 years — welcome to our new website', 'Ipinagdiwang namin ang 11 taon — maligayang pagdating sa aming bagong website');
-    } else if (day < event) {
-      set('Welcome \u2014 we\'re celebrating 11 years on October 18', 'Maligayang pagdating \u2014 ipinagdiriwang namin ang 11 taon sa Oktubre 18');
-    }
-  })();
-</script>
-<script>
-  // Appreciation Month (October 2026): from Oct 1 to Oct 17 the hero greeting points to the banner (from Oct 18
-  // the anniversary greeting takes over), and the card in Upcoming Activities is retired after Oct 31. Uses the
-  // Toronto date worked out next to the banner (window.apprToday). It sits after the hero greeting script above
-  // so that it takes priority.
+  // Appreciation Month (October 2026): the card in Upcoming Activities is retired after Oct 31.
+  // Uses the Toronto date worked out next to the banner (window.apprToday).
   (function () {
     var day = window.apprToday;
     if (!day) return;
     var card = document.getElementById('appreciationCard');
     if (card && day > '2026-10-31') card.style.display = 'none';
-    var pill = document.getElementById('heroWelcome');
-    var pillText = document.getElementById('heroWelcomeText');
-    if (day >= '2026-10-01' && day <= '2026-10-17' && pill && pillText) {
-      var en = 'Happy Pastors and Church Workers Appreciation Month';
-      var tl = 'Maligayang Buwan ng Pagpapahalaga sa mga Pastor at Manggagawa ng Simbahan';
-      pill.setAttribute('href', '#appreciation');
-      pillText.setAttribute('data-en', en);
-      pillText.setAttribute('data-tl', tl);
-      pillText.textContent = document.documentElement.lang === 'tl' ? tl : en;
-    }
   })();
 </script>
 <script>
@@ -2367,8 +2037,6 @@
                 'Nabasag mo ang code \u2726', 'Labing-isang taon ng pagsamba, pagsasama-sama at pamilya \u2014 at may upuan ka na sa hapag. Lahat ay sa biyaya ng Diyos.'],
       mabuhay: ['Mabuhay! \u2726', 'That\u2019s the warmest word we know. There\u2019s always a seat saved for you.',
                 'Mabuhay! \u2726', 'Iyan ang pinakamainit naming salita. Laging may nakalaang upuan para sa iyo.'],
-      badge:   ['Eleven for eleven \u2726', 'You counted every year! Thank you for being part of the story \u2014 we\u2019re only getting started.',
-                'Labing-isa para sa labing-isa \u2726', 'Binilang mo ang bawat taon! Salamat sa pagiging bahagi ng kuwento \u2014 nagsisimula pa lang kami.'],
       logo:    ['Welcome home \u2726', 'You spun us right round. Come in, grab a seat, and stay a while.',
                 'Maligayang pagdating sa tahanan \u2726', 'Pinaikot mo kami! Pumasok ka, maupo, at manatili muna.'],
       cross:   ['Found the cross \u2726', 'Wherever two or three gather, you\u2019re welcome among them.',
@@ -2397,7 +2065,7 @@
       '.egg-toast.show{opacity:1;transform:translate(-50%,0) scale(1);}' +
       '.egg-title{font-family:"Fraunces",serif;font-style:italic;font-weight:700;font-size:22px;line-height:1.2;color:#F0C578;margin-bottom:8px;}' +
       '.egg-body{font-family:"Work Sans",sans-serif;font-size:15px;line-height:1.55;color:#FBF3E4;}' +
-      '.anniv-badge,.hero-logo,.hero-inner h1>span:first-child,.verse-banner .cross-divider{-webkit-user-select:none;user-select:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}' +
+      '.hero-logo,.hero-inner h1>span:first-child,.verse-banner .cross-divider{-webkit-user-select:none;user-select:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}' +
       '.hero-logo{-webkit-touch-callout:none;}' +
       '.verse-banner .cross-divider{box-sizing:content-box;padding:12px;margin:-12px auto 8px;transition:filter .3s ease;}' +
       '@media (prefers-reduced-motion: reduce){.egg-toast{transition:opacity .2s;transform:translate(-50%,0);}}';
@@ -2500,31 +2168,6 @@
     });
 
     // ---- Tap eggs (phone-friendly). Each tap must come within ~2.5s of the last. ----
-    function ordinal(n) { var s = ['th', 'st', 'nd', 'rd'], v = n % 100; return s[(v - 20) % 10] || s[v] || s[0]; }
-
-    // 1) The "11th" badge counts up the years, 1st, 2nd, 3rd ... and spins on the 11th
-    (function () {
-      var badge = document.querySelector('.anniv-badge');
-      var num = badge && badge.querySelector('.num');
-      if (!badge || !num) return;
-      var original = num.innerHTML, taps = 0, timer = null;
-      function reset() { taps = 0; num.innerHTML = original; }
-      badge.addEventListener('click', function () {
-        taps++;
-        clearTimeout(timer);
-        num.innerHTML = taps + '<sup>' + ordinal(taps) + '</sup>';
-        if (taps >= 11) {
-          play(badge, [{ transform: 'rotate(0) scale(1)' }, { transform: 'rotate(360deg) scale(1.12)' }, { transform: 'rotate(720deg) scale(1)' }],
-               { duration: 1100, easing: 'ease-in-out' });
-          celebrate('badge');
-          timer = setTimeout(reset, 1800);
-          taps = 0;
-        } else {
-          play(badge, [{ transform: 'scale(1)' }, { transform: 'scale(1.1)' }, { transform: 'scale(1)' }], { duration: 200 });
-          timer = setTimeout(reset, 2500);
-        }
-      });
-    })();
 
     // 2) The big logo wiggles on each tap and spins on the 5th
     (function () {
