@@ -901,7 +901,7 @@
   @media (prefers-reduced-motion: reduce) {
     .lightbox-overlay, .lightbox-overlay img { transition: none; }
   }
-  .lightbox-close, .lightbox-prev, .lightbox-next {
+  .lightbox-close, .lightbox-prev, .lightbox-next, .lightbox-download {
     position: absolute;
     background: rgba(255,255,255,0.12);
     color: #fff;
@@ -916,7 +916,10 @@
     justify-content: center;
     transition: background 0.2s;
   }
-  .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.25); }
+  .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover, .lightbox-download:hover { background: rgba(255,255,255,0.25); }
+  .lightbox-download { top: 20px; right: 76px; text-decoration: none; }
+  .lightbox-download svg { width: 20px; height: 20px; }
+  .lightbox-close:focus-visible, .lightbox-prev:focus-visible, .lightbox-next:focus-visible, .lightbox-download:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   .lightbox-close { top: 20px; right: 20px; }
   .lightbox-prev { left: 20px; top: 50%; transform: translateY(-50%); }
   .lightbox-next { right: 20px; top: 50%; transform: translateY(-50%); }
@@ -1992,6 +1995,9 @@
 
 <div class="lightbox-overlay" id="lightboxOverlay" onclick="if(event.target===this) closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+  <a class="lightbox-download" id="lightboxDownload" href="#" download onclick="event.stopPropagation()" aria-label="Download photo" title="Download photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/></svg>
+  </a>
   <button class="lightbox-prev" onclick="event.stopPropagation(); changeLightbox(-1)" aria-label="Previous photo">&#8249;</button>
   <img id="lightboxImg" src="" alt="Enlarged church photo">
   <button class="lightbox-next" onclick="event.stopPropagation(); changeLightbox(1)" aria-label="Next photo">&#8250;</button>
@@ -2121,6 +2127,19 @@
     const item = images[currentIndex];
     lightboxImg.src = item.src;
     lightboxImg.alt = item.alt;
+    const dl = document.getElementById('lightboxDownload');
+    if (dl) {
+      let name = (item.src.split('?')[0].split('/').pop() || '');
+      if (item.src.indexOf('data:') === 0 || !/\.(jpe?g|png|webp|gif)$/i.test(name)) {
+        const m = /^data:image\/([a-z0-9+]+)/i.exec(item.src);
+        name = 'mcco-photo-' + (currentIndex + 1) + '.' + (m ? m[1].replace('jpeg', 'jpg') : 'jpg');
+      }
+      dl.href = item.src;
+      dl.setAttribute('download', name);
+      const t = document.documentElement.lang === 'tl' ? 'I-download ang larawan' : 'Download photo';
+      dl.setAttribute('aria-label', t);
+      dl.setAttribute('title', t);
+    }
   }
   // If a photo can't load, try the next one; if none load, close the viewer.
   lightboxImg.addEventListener('load', function () { lightboxFails = 0; });
