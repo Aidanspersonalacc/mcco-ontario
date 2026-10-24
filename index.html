@@ -863,18 +863,43 @@
     height: 12px;
     transition: transform 0.3s ease;
   }
-  .btn-gallery[aria-expanded="true"] .chevron { transform: rotate(180deg); }
-  .gallery-grid {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    margin-top: 0;
-    transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.5s ease;
+  /* ---------- Photo albums ---------- */
+  .gallery-grid.has-albums { display: block; }
+  .album-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 22px; }
+  @media (max-width: 900px) { .album-cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .album-cards { gap: 22px 12px; } }
+  .album-card {
+    display: flex; flex-direction: column; width: 100%; margin: 0; padding: 0;
+    background: #fff; border: 1px solid var(--rule); border-radius: 16px; overflow: hidden;
+    font: inherit; color: var(--ink); text-align: left; cursor: pointer;
+    box-shadow: 0 6px 18px rgba(46,38,32,0.08); transition: transform 0.25s, box-shadow 0.25s;
   }
-  .gallery-grid.open {
-    opacity: 1;
-    margin-top: 36px;
+  .album-mosaic {
+    display: grid; grid-template-columns: 1.35fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px;
+    aspect-ratio: 4 / 3; background: var(--rule);
   }
+  .album-body { display: block; padding: 14px 18px 18px; }
+  .album-mosaic span { display: block; background: var(--rule) center / cover no-repeat; }
+  .album-mosaic span:first-child { grid-row: 1 / 3; }
+  .album-mosaic.two span:first-child { grid-row: auto; }
+  .album-mosaic.two { grid-template-rows: 1fr; }
+  .album-mosaic.one { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+  .album-mosaic.one span:first-child { grid-row: auto; }
+  .album-card:hover, .album-card:focus-visible { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(46,38,32,0.16); }
+  .album-card:focus-visible { outline: 2px solid var(--lantern); outline-offset: 3px; }
+  .album-name { display: block; font-family: 'Fraunces', serif; font-weight: 600; font-size: 18px; line-height: 1.25; }
+  .album-desc { display: block; font-size: 14px; line-height: 1.5; color: var(--muted); margin-top: 6px; }
+  .album-count { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dusk); margin-top: 10px; }
+  .album-head .album-desc { flex-basis: 100%; margin: 0; }
+  .gallery-album { display: none; }
+  .gallery-album.open { display: block; }
+  .album-head { display: flex; align-items: center; gap: 14px 18px; flex-wrap: wrap; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+  .album-back { padding: 9px 16px; font-size: 13px; gap: 8px; }
+  .album-back svg { width: 14px; height: 14px; }
+  .album-title { margin: 0; font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; color: var(--ink); }
+  .album-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  @media (max-width: 900px) { .album-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 600px) { .album-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } .album-title { font-size: 19px; } }
   .lightbox-overlay {
     display: flex;
     position: fixed;
@@ -1654,11 +1679,7 @@
     <div class="section-head">
       <div class="section-tag i18n" data-en="Moments" data-tl="Mga Alaala">Moments</div>
       <h2 class="i18n" data-en="Moments From Our Church Family" data-tl="Mga Sandali Mula sa Aming Pamilya sa Simbahan">Moments From Our Church Family</h2>
-      <p class="i18n" data-en="A few favourites from our 11th and 10th anniversary celebrations. Tap any photo to view it larger." data-tl="Ilang paborito mula sa aming ika-11 at ika-10 anibersaryong pagdiriwang. Pindutin ang anumang larawan para tingnan ito nang mas malaki.">A few favourites from our 11th and 10th anniversary celebrations. Tap any photo to view it larger.</p>
-      <button type="button" id="galleryToggleBtn" class="btn-gallery" onclick="toggleGallery()" style="margin-top:16px;" aria-expanded="false" aria-controls="galleryGrid">
-        <span class="btn-label i18n" data-en="Show Photos" data-tl="Ipakita ang Mga Larawan">Show Photos</span>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-      </button>
+      <p class="i18n" data-en="Browse our photo albums. Tap an album to open it, then tap any photo to view it larger." data-tl="Mag-browse sa aming mga album ng larawan. Pindutin ang album para buksan ito, pagkatapos ay pindutin ang anumang larawan para tingnan ito nang mas malaki.">Browse our photo albums. Tap an album to open it, then tap any photo to view it larger.</p>
     </div>
     <div class="gallery-grid" id="galleryGrid">
       <div class="gallery-group-heading i18n" data-en="11th Anniversary Celebration" data-tl="Ika-11 Anibersaryong Pagdiriwang">11th Anniversary Celebration</div>
@@ -2065,47 +2086,14 @@
     images = Array.from(grid.querySelectorAll('img')).map(img => ({ src: img.src, alt: img.alt }));
   }
 
-  // Keep the button label translatable: store both languages on the element, show the current one.
-  function setGalleryLabel(label, open) {
-    const en = open ? 'Hide Photos' : 'Show Photos';
-    const tl = open ? 'Itago ang Mga Larawan' : 'Ipakita ang Mga Larawan';
-    label.setAttribute('data-en', en);
-    label.setAttribute('data-tl', tl);
-    label.textContent = document.documentElement.lang === 'tl' ? tl : en;
-  }
-
-  window.toggleGallery = function() {
-    const btn = document.getElementById('galleryToggleBtn');
-    const label = btn.querySelector('.btn-label');
-    const isOpen = grid.classList.contains('open');
-
-    if (isOpen) {
-      grid.style.maxHeight = grid.scrollHeight + 'px';
-      void grid.offsetHeight; // force reflow so the collapse animates from a real height
-      requestAnimationFrame(() => {
-        grid.classList.remove('open');
-        grid.style.maxHeight = '0px';
-      });
-      setGalleryLabel(label, false);
-      btn.setAttribute('aria-expanded', 'false');
-    } else {
-      grid.classList.add('open');
-      grid.style.maxHeight = grid.scrollHeight + 'px';
-      grid.addEventListener('transitionend', function onEnd(e) {
-        if (e.target !== grid || e.propertyName !== 'max-height') return;
-        grid.removeEventListener('transitionend', onEnd);
-        // Only release the height cap if the grid is still open (it may have been closed mid-animation)
-        if (grid.classList.contains('open')) grid.style.maxHeight = 'none';
-      });
-      setGalleryLabel(label, true);
-      btn.setAttribute('aria-expanded', 'true');
-      grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  };
-
   window.openLightbox = function(index) {
-    if (images.length === 0) collectImages();
-    currentIndex = index;
+    // Browse only the photos of the album that was opened.
+    const all = Array.from(grid.querySelectorAll('img'));
+    const target = all[index];
+    const scope = (target && target.closest('.gallery-album')) || grid;
+    const list = Array.from(scope.querySelectorAll('img'));
+    images = list.map(img => ({ src: img.src, alt: img.alt }));
+    currentIndex = target ? Math.max(0, list.indexOf(target)) : 0;
     showImage();
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -2168,6 +2156,154 @@
     if (e.key === 'ArrowRight') changeLightbox(1);
   });
 })();
+</script>
+<script>
+  // Turns each titled group of photos into an album card that previews its own photos.
+  // Tap a card to open the album, "All albums" to go back.
+  (function () {
+    var grid = document.getElementById('galleryGrid');
+    if (!grid) return;
+    var groups = [], cur = null;
+    Array.prototype.slice.call(grid.children).forEach(function (el) {
+      if (el.classList.contains('gallery-group-heading')) { cur = { heading: el, items: [] }; groups.push(cur); }
+      else if (cur && el.classList.contains('gallery-item')) cur.items.push(el);
+    });
+    if (!groups.length) return;
+
+    var isTl = function () { return document.documentElement.lang === 'tl'; };
+    // Short description for each album: [English, Tagalog], matched by the album's English title.
+    var DESC = {
+      '11th Anniversary Celebration': ['Worship, music, fellowship and a shared meal as we celebrated 11 years together.', 'Pagsamba, musika, pagsasama-sama at sabay-sabay na pagkain habang ipinagdiriwang namin ang 11 taon.'],
+      '10th Anniversary Celebration': ['Memories from our 10th anniversary celebration.', 'Mga alaala mula sa aming ika-10 anibersaryong pagdiriwang.'],
+      'Youth Summer Camp': ['Fun, friendship and faith with our youth at summer camp.', 'Saya, pagkakaibigan at pananampalataya kasama ang aming mga kabataan sa kampo sa tag-init.'],
+      'Senior Trips': ['Outings and good company with our seniors.', 'Mga paglalakbay at masayang samahan kasama ang aming mga nakatatanda.'],
+      'Young Adult Fellowship': ['Our young adults coming together for fellowship and friendship.', 'Ang aming mga young adult na nagtitipon para sa fellowship at pagkakaibigan.'],
+      "Women's Fellowship": ['Sisters in faith spending time together.', 'Mga kapatid sa pananampalataya na nagsasama-sama.'],
+      'MCCO Choir': ['Our choir lifting their voices in worship.', 'Ang aming koro na nag-aawit ng papuri sa pagsamba.']
+    };
+    var cards = document.createElement('div');
+    cards.className = 'album-cards';
+    var albums = [], cardEls = [];
+
+    function openAlbum(i) {
+      albums.forEach(function (a, j) { a.classList.toggle('open', j === i); });
+      cards.style.display = 'none';
+      albums[i].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      var back = albums[i].querySelector('.album-back');
+      if (back) back.focus({ preventScroll: true });
+    }
+    function closeAlbum(i) {
+      albums[i].classList.remove('open');
+      cards.style.display = '';
+      cards.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      cardEls[i].focus({ preventScroll: true });
+    }
+
+    groups.forEach(function (g, i) {
+      var en = g.heading.getAttribute('data-en') || g.heading.textContent.trim();
+      var tl = g.heading.getAttribute('data-tl') || en;
+      var n = g.items.length;
+      var countEn = n + (n === 1 ? ' photo' : ' photos');
+      var countTl = n + ' larawan';
+
+      var album = document.createElement('section');
+      album.className = 'gallery-album';
+      album.setAttribute('aria-label', en);
+      var head = document.createElement('div');
+      head.className = 'album-head';
+      var back = document.createElement('button');
+      back.type = 'button';
+      back.className = 'btn-gallery album-back';
+      back.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>' +
+        '<span class="i18n" data-en="All albums" data-tl="Lahat ng album">' + (isTl() ? 'Lahat ng album' : 'All albums') + '</span>';
+      back.addEventListener('click', function () { closeAlbum(i); });
+      var title = document.createElement('h3');
+      title.className = 'album-title i18n';
+      title.setAttribute('data-en', en);
+      title.setAttribute('data-tl', tl);
+      title.textContent = isTl() ? tl : en;
+      head.appendChild(back);
+      head.appendChild(title);
+      var d = DESC[en];
+      if (d) {
+        var headDesc = document.createElement('p');
+        headDesc.className = 'album-desc i18n';
+        headDesc.setAttribute('data-en', d[0]);
+        headDesc.setAttribute('data-tl', d[1]);
+        headDesc.textContent = isTl() ? d[1] : d[0];
+        head.appendChild(headDesc);
+      }
+      var agrid = document.createElement('div');
+      agrid.className = 'album-grid';
+      g.items.forEach(function (item) { agrid.appendChild(item); });
+      album.appendChild(head);
+      album.appendChild(agrid);
+      albums.push(album);
+
+      // The card previews the album with a few of its own photos, spread across the album.
+      var picks = [0, Math.floor(n / 3), Math.floor((2 * n) / 3)].filter(function (v, k, a) { return a.indexOf(v) === k && v < n; });
+      var card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'album-card';
+      var mosaic = document.createElement('span');
+      mosaic.className = 'album-mosaic' + (picks.length === 2 ? ' two' : picks.length === 1 ? ' one' : '');
+      picks.forEach(function (idx) {
+        var im = g.items[idx].querySelector('img');
+        var tile = document.createElement('span');
+        tile.setAttribute('data-src', im ? (im.getAttribute('src') || '') : '');
+        mosaic.appendChild(tile);
+      });
+      var name = document.createElement('span');
+      name.className = 'album-name i18n';
+      name.setAttribute('data-en', en);
+      name.setAttribute('data-tl', tl);
+      name.textContent = isTl() ? tl : en;
+      var count = document.createElement('span');
+      count.className = 'album-count i18n';
+      count.setAttribute('data-en', countEn);
+      count.setAttribute('data-tl', countTl);
+      count.textContent = isTl() ? countTl : countEn;
+      var body = document.createElement('span');
+      body.className = 'album-body';
+      body.appendChild(name);
+      if (d) {
+        var cardDesc = document.createElement('span');
+        cardDesc.className = 'album-desc i18n';
+        cardDesc.setAttribute('data-en', d[0]);
+        cardDesc.setAttribute('data-tl', d[1]);
+        cardDesc.textContent = isTl() ? d[1] : d[0];
+        body.appendChild(cardDesc);
+      }
+      body.appendChild(count);
+      card.appendChild(mosaic);
+      card.appendChild(body);
+      card.addEventListener('click', function () { openAlbum(i); });
+      cards.appendChild(card);
+      cardEls.push(card);
+      g.heading.remove();
+    });
+
+    grid.appendChild(cards);
+    albums.forEach(function (a) { grid.appendChild(a); });
+    grid.classList.add('has-albums');
+
+    // Preview photos load as the gallery scrolls into view, so the rest of the page stays light.
+    function loadPreviews() {
+      cards.querySelectorAll('[data-src]').forEach(function (t) {
+        var src = t.getAttribute('data-src');
+        if (src) t.style.backgroundImage = 'url("' + src.replace(/"/g, '%22') + '")';
+        t.removeAttribute('data-src');
+      });
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { loadPreviews(); io.disconnect(); }
+      }, { rootMargin: '400px 0px' });
+      io.observe(cards);
+    } else {
+      loadPreviews();
+    }
+  })();
 </script>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
